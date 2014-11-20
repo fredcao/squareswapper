@@ -3,7 +3,7 @@
 #include "square.h"
 
 class BasicSquare: public Square{
-	
+	void draw();	
 	public:
 	BasicSquare(int r, int c, int colour, bool locked);
 	~BasicSquare();

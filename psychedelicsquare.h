@@ -3,7 +3,7 @@
 #include "square.h"
 
 class PsychedelicSquare: public Square{
-	
+	void draw();	
 	public:
 	PsychedelicSquare(int row, int col, int colour,bool locked);
 	~PsychedelicSquare();
