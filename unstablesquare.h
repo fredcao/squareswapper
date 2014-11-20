@@ -5,7 +5,7 @@
 class UnstableSquare: public Square{
 	
 	public:
-	UnstableSquare();
+	UnstableSquare(int row, int col, int colour, bool locked);
 	~UnstableSquare();
 	void notify();
 };

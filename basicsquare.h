@@ -5,7 +5,7 @@
 class BasicSquare: public Square{
 	
 	public:
-	BasicSquare();
+	BasicSquare(int r, int c, int colour, bool locked);
 	~BasicSquare();
 	void notify();
 };

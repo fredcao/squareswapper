@@ -1,7 +1,7 @@
 #include "basicsquare.h"
 using namespace std;
 
-BasicSquare::BasicSquare():colour(0),row(0),col(0),type(0){}
+BasicSquare::BasicSquare(int row,int col,int colour=White,bool locked=false):row(row),col(col),colour(colour),type(0),locked(locked){}
 
 BasicSquare::~BasicSquare(){}
 

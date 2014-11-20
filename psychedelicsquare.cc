@@ -1,7 +1,7 @@
 #include "psychedelicsquare.h"
 using namespace std;
 
-PsychedelicSquare::PsychedelicSquare():colour(0),row(0),col(0),type(0){}
+PsychedelicSquare::PsychedelicSquare(int row,int col,int colour=White,bool locked=false):row(row),col(col),colour(colour),type(4),locked(locked){}
 
 PsychedelicSquare::~PsychedelicSquare(){}
 

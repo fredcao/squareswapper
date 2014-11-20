@@ -5,7 +5,7 @@
 class UprightSquare: public Square{
 	
 	public:
-	UprightSquare();
+	UprightSquare(int row, int col,int colour, bool locked);
 	~UprightSquare();
 	void notify();
 };

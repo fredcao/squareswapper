@@ -5,7 +5,7 @@
 class LateralSquare: public Square{
 	
 	public:
-	LateralSquare();
+	LateralSquare(int row, int col, int colour, bool locke;
 	~LateralSquare();
 	void notify();
 };
