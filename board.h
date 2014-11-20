@@ -1,10 +1,27 @@
 #ifndef __BOARD_H__
 #define __BOARD_H__
 
+#include "square.h"
+
 class Board {
+
+	protected:
+
+	static Board *instance;
+
+	Square **board;
+	TextDisplay *td;
+	Xwindow *xw;
+	
+	int boardSize;
+	int level;
+	int movesLeft;
+	int score;
+	int highscore;
 
 	// Private stuff
 
+	void clearBoard();
 
 	public:
 
@@ -19,9 +36,6 @@ class Board {
 	void printBoard();
 	void cleanup();	
 	
-	enum { BasicSquare = 0; LateralSquare; UprightSquare; UnstableSquare; PsychedelicSquare }
-
-
 
 
 };

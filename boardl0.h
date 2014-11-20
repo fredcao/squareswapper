@@ -8,7 +8,8 @@ class BoardL0 : public Board {
 
 
 	public:
-
+	
+	BoardL0();
 	~BoardL0();
 
 	void constructBoard();
