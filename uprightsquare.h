@@ -5,11 +5,8 @@
 class UprightSquare: public Square{
 	
 	public:
+	UprightSquare();
 	~UprightSquare();
-	int getColour();
-	int getRow();
-	int getCol();
-	int getType();
 	void notify();
 };
 

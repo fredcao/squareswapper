@@ -2,14 +2,19 @@
 #define __SQUARE_H__
 
 class Square{
-
+	protected:
+	int colour,row,col,type;
+	bool locked;
 	public:
 	enum { BasicSquare = 0; LateralSquare; UprightSquare; UnstableSquare; PsychedelicSquare }
+	enum { White = 0, Red, Green, Blue }
+	Square();
 	virtual ~Square();
-	virtual int getColour() = 0;
-	virtual int getRow() = 0;
-	virtual int getCol() = 0;
-	virtual int getType() = 0;
+	int getColour();
+	int getRow();
+	int getCol();
+	int getType();
+	bool getLocked;
 	virtual void notify() = 0;
 };
 

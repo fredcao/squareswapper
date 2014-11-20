@@ -5,11 +5,8 @@
 class LateralSquare: public Square{
 	
 	public:
+	LateralSquare();
 	~LateralSquare();
-	int getColour();
-	int getRow();
-	int getCol();
-	int getType();
 	void notify();
 };
 

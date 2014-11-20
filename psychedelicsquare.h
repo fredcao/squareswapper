@@ -5,11 +5,8 @@
 class PsychedelicSquare: public Square{
 	
 	public:
+	PsychedelicSquare();
 	~PsychedelicSquare();
-	int getColour();
-	int getRow();
-	int getCol();
-	int getType();
 	void notify();
 };
 

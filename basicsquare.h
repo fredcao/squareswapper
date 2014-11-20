@@ -5,11 +5,8 @@
 class BasicSquare: public Square{
 	
 	public:
+	BasicSquare();
 	~BasicSquare();
-	int getColour();
-	int getRow();
-	int getCol();
-	int getType();
 	void notify();
 };
 
