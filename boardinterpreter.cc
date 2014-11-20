@@ -1,10 +1,15 @@
-// TODO: Include all the special square header files
-
+#include <iostream>
+#include <fstream>
+#include "basicsquare.h"
+#include "lateralsquare.h"
+#include "uprightsquare.h"
+#include "unstablesquare.h"
+#include "psychedelicsquare.h"
 #include "boardinterpreter.h"
 
 using namespace std;
 
-BoardInterpreter::BoardInterpreter() : textOnly(false), startLevel(0) {
+BoardInterpreter::BoardInterpreter() : textOnlyFlag(false), startLevel(0) {
 
 
 
@@ -25,6 +30,7 @@ void BoardInterpreter::swap(int x, int y, int z) {
 
 int *BoardInterpreter::hint() {
 
+	return new int[0];
 
 }
 
@@ -53,23 +59,23 @@ void BoardInterpreter::restart() {
 
 }
 
-void setTextOnly(bool textOnly) {
+void BoardInterpreter::setTextOnly(bool textOnly) {
 
-	this->textOnly = textOnly;
+	this->textOnlyFlag = textOnly;
 
 }
 
-void setSeed(int seed) {
+void BoardInterpreter::setSeed(int seed) {
 
 	this->seed = seed;
 
 }
 
-void setFile(string file) {
+void BoardInterpreter::setFile(string file) {
 
 	this->file = file;
 
-	ifstream fs(file);
+	ifstream fs(file.c_str());
 
 	string input;
 
@@ -81,7 +87,7 @@ void setFile(string file) {
 
 		bool locked = (input.at(0) == 'l') ? true : false;
 		char type = input.at(1);
-		int color = input.at(2) - '0';
+		int colour = input.at(2) - '0';
 
 
 		// input will be of the three char format
@@ -131,7 +137,7 @@ void setFile(string file) {
 
 }
 
-void setStartLevel(int startLevel) {
+void BoardInterpreter::setStartLevel(int startLevel) {
 
 	this->startLevel = startLevel;
 
@@ -140,6 +146,6 @@ void setStartLevel(int startLevel) {
 
 bool BoardInterpreter::textOnly() {
 
-	return textOnly;
+	return textOnlyFlag;
 
 }

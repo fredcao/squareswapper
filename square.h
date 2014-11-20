@@ -7,15 +7,15 @@ class Square{
 	bool locked;
 	virtual void draw() = 0;
 	public:
-	enum { BasicSquare = 0; LateralSquare; UprightSquare; UnstableSquare; PsychedelicSquare }
-	enum { White = 0, Red, Green, Blue }
+	enum { BasicSquare = 0, LateralSquare, UprightSquare, UnstableSquare, PsychedelicSquare };
+	enum { White = 0, Red, Green, Blue };
 	Square();
 	virtual ~Square();
 	int getRow();
 	int getCol();
 	int getColour();
 	int getType();
-	bool getLocked;
+	bool getLocked();
 	virtual void notify() = 0;
 };
 

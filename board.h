@@ -2,6 +2,8 @@
 #define __BOARD_H__
 
 #include "square.h"
+#include "textdisplay.h"
+#include "window.h"
 
 class Board {
 
@@ -10,8 +12,6 @@ class Board {
 	static Board *instance;
 
 	Square ***board;
-	TextDisplay *td;
-	Xwindow *xw;
 	
 	int boardSize;
 	int level;
@@ -19,14 +19,18 @@ class Board {
 	int score;
 	int highscore;
 
+	TextDisplay *td;
+	Xwindow *xw;
+
 	// Private stuff
 
 	void clearBoard();
 
 	public:
 
+	Board();
 	virtual ~Board();
-	virtual constructBoard() = 0;
+	virtual void constructBoard(); 
 	static Board *getInstance();
 	int getLevel();
 	int getMovesLeft();
@@ -34,7 +38,7 @@ class Board {
 	int getHighScore();
 	
 	void printBoard();
-	void cleanup();	
+	static void cleanup();	
 	
 
 

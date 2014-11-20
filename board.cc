@@ -1,6 +1,12 @@
+
+#include <cstdlib>
 #include "board.h"
 
-Board::Board() : instance(NULL), boardSize(10), level(0), movesLeft(-1), score(0), highscore(0), td(NULL), xw(NULL) { }
+using namespace std;
+
+Board *Board::instance = NULL;	// Set initial value for static instance in Board
+
+Board::Board() : boardSize(10), level(0), movesLeft(-1), score(0), highscore(0), td(NULL), xw(NULL) { }
 
 Board::~Board() {
 
@@ -19,6 +25,8 @@ Board::~Board() {
 	delete [] board;
 
 }
+
+void Board::constructBoard() { }
 
 void Board::clearBoard() {
 
@@ -76,12 +84,26 @@ int Board::getHighScore() {
 }
 
 void Board::printBoard() {
+	
+	cout << "Board print: " << endl;
 
+	for (int i = 0; i < boardSize; i++) {
+
+		for (int j = 0; j < boardSize; j++) {
+
+			cout << board[i][j]->getLocked() << board[i][j]->getType() << board[i][j]->getColour() << " " << endl;
+
+		}
+
+		cout << endl;
+
+	}
+	cout << "TD print: " << endl;
 	cout << td;
 
 }
 
-void cleanup() {
+void Board::cleanup() {
 
 	delete instance;
 

@@ -8,14 +8,14 @@ class BoardInterpreter : public Board {
 
 	// Private stuff
 
-	bool textOnly;
+	bool textOnlyFlag;
 	int seed;
-	string file;
+	std::string file;
 	int startLevel;
 
 	public:
 
-	BoardInterpreter(bool textOnly, int seed, string file, int startLevel);
+	BoardInterpreter();
 	~BoardInterpreter();
 
 	void swap(int x, int y, int z);
@@ -29,7 +29,7 @@ class BoardInterpreter : public Board {
 
 	void setTextOnly(bool textOnly);
 	void setSeed(int seed);
-	void setFile(string file);
+	void setFile(std::string file);
 	void setStartLevel(int startLevel);
 	
 	bool textOnly();

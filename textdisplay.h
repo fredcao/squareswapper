@@ -1,7 +1,10 @@
 #ifndef __TEXTDISPLAY_H__
 #define __TEXTDISPLAY_H__
+
 #include <iostream>
 #include <sstream>
+#include "square.h"
+
 
 class TextDisplay {
 	

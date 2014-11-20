@@ -40,7 +40,7 @@ TextDisplay::TextDisplay(int n) : gridSize(n) {
 
 	for (int i = 0; i < 5; i++) {
 
-		colourCount[i] = 0;
+		squareCount[i] = 0;
 
 	}
 
@@ -78,7 +78,7 @@ void TextDisplay::notify(int oldType, Square &sq) {
 
 	squareCount[oldType] --;
 
-	theDisplay[r][c][0] = sq->locked() ? 'l' : '_';
+	theDisplay[r][c][0] = sq.getLocked() ? 'l' : '_';
 	
 	if (type == sq.BasicSquare) {
 	
@@ -106,7 +106,7 @@ void TextDisplay::notify(int oldType, Square &sq) {
 
 	}
 
-	theDisplay[r][c][2] = sq.getColor() + '0';
+	theDisplay[r][c][2] = sq.getColour() + '0';
 
 	squareCount[type]++;	
 

@@ -1,6 +1,8 @@
 #ifndef __BOARD_L1__
 #define __BOARD_L1__
 
+#include "board.h"
+
 class BoardL1 : public Board {
 
 
