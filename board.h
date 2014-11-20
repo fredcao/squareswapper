@@ -9,7 +9,7 @@ class Board {
 
 	static Board *instance;
 
-	Square **board;
+	Square ***board;
 	TextDisplay *td;
 	Xwindow *xw;
 	
