@@ -1,7 +1,7 @@
 #include "uprightsquare.h"
 using namespace std;
 
-UprightSquare::UprightSquare():colour(0),row(0),col(0),type(0){}
+UprightSquare::UprightSquare(int row,int col,int colour=White,bool locked=false):row(row),col(col),colour(colour),type(2),locked(locked){}
 
 UprightSquare::~UprightSquare(){}
 
