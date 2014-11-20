@@ -79,9 +79,9 @@ void setFile(string file) {
 
 		fs >> input;
 
-		bool locked = (s.at(0) == 'l') ? true : false;
-		char type = s.at(1);
-		int color = s.at(2) - '0';
+		bool locked = (input.at(0) == 'l') ? true : false;
+		char type = input.at(1);
+		int color = input.at(2) - '0';
 
 
 		// input will be of the three char format
@@ -101,6 +101,22 @@ void setFile(string file) {
 		*/
 
 		// Format: board[i][j] = new _____Square(...);
+		if(type == '_'){
+			board[i][j] = new BasicSquare(i,j,colour,locked);
+		}
+		else if(type == 'h'){
+			board[i][j] = new LateralSquare(i,j,colour,locked);
+		}
+		else if(type == 'v'){
+			board[i][j] = new UprightSquare(i,j,colour,locked);
+		}
+		else if(type == 'b'){
+			board[i][j] = new UnstableSquare(i,j,colour,locked);
+		}
+		else if(type == 'p'){
+			board[i][j] = new PsychedelicSquare(i,j,colour,locked);
+		}
+
 
 		//Ignore this for now
 		//board[i][j]->notifyTD();
