@@ -1,11 +1,11 @@
-#ifndef __BASICSQUARE_H__
-#define __BASICSQUARE_H__
+#ifndef __LATERALSQUARE_H__
+#define __LATERALSQUARE_H__
 #include "square.h"
 
-class BasicSquare: public Square{
+class LateralSquare: public Square{
 	
 	public:
-	~BasicSquare();
+	~LateralSquare();
 	int getColour();
 	int getRow();
 	int getCol();

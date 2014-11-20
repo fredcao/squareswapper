@@ -4,6 +4,7 @@
 class Square{
 
 	public:
+	enum { BasicSquare = 0; LateralSquare; UprightSquare; UnstableSquare; PsychedelicSquare }
 	virtual ~Square();
 	virtual int getColour() = 0;
 	virtual int getRow() = 0;

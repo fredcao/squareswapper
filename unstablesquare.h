@@ -1,11 +1,11 @@
-#ifndef __BASICSQUARE_H__
-#define __BASICSQUARE_H__
+#ifndef __UNSTABLESQUARE_H__
+#define __UNSTABLESQUARE_H__
 #include "square.h"
 
-class BasicSquare: public Square{
+class UnstableSquare: public Square{
 	
 	public:
-	~BasicSquare();
+	~UnstableSquare();
 	int getColour();
 	int getRow();
 	int getCol();
