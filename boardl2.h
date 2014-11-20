@@ -9,6 +9,7 @@ class BoardL2 : public Board {
 
 	public:
 
+	BoardL2();
 	~BoardL2();
 
 	void constructBoard();
