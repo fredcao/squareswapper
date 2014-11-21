@@ -161,9 +161,7 @@ void Board::cleanup() {
 
 // [ PROTECTED AND RIVATE METHODS ]
 
-// TODO [KCXUE]: Implement clearRow
-
-void clearRow(int row) {
+void Board::clearRow(int row) {
 
 	// Remember board is 2D array of Square *
 	// I.e. board[i][j] is a Square *
@@ -172,7 +170,9 @@ void clearRow(int row) {
 	// You must call notify on each Square in board[i][j] if the pointer is not NULL
 	// IMPORTANT: WHEN USING A LOOP, PLEASE CHECK THAT THE POINTER IS NOT NULL
 
-	for (int j = 0; j < boardSize; i++) {
+	// Err it seems like I did this for you already :P
+
+	for (int j = 0; j < boardSize; j++) {
 	
 		if (board[row][j]) {
 
@@ -187,16 +187,14 @@ void clearRow(int row) {
 
 // TODO [KCXUE]: Implement clearCol
 
-void clearCol(int col) {
+void Board::clearCol(int col) {
 
 	// Same idea as clearRow, except for columns
 
 
 }
 
-// TODO [KCXUE]: Implement explode
-
-void explode(int centerX, int centerY, int width) {
+void Board::explode(int centerX, int centerY, int width) {
 
 
 	// This one is a bit more complicated
@@ -214,7 +212,7 @@ void explode(int centerX, int centerY, int width) {
 
 }
 
-void clearColour(int colour) {
+void Board::clearColour(int colour) {
 
 	// Given a colour, search through the whole board array and notify all Squares of colour
 	// Of course, must check that the pointer isn't null before checking the colour
