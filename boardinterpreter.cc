@@ -90,23 +90,6 @@ void BoardInterpreter::setFile(string file) {
 		int colour = input.at(2) - '0';
 
 
-		// input will be of the three char format
-
-		// E.g. lv3
-
-		/*
-
-			Create new Square on the heap depending on the type (use if statement) 
-			You need parameters:
-
-			1) Row (i)
-			2) Column (j)
-			3) Colour
-			4) Locked
-
-		*/
-
-		// Format: board[i][j] = new _____Square(...);
 		if(type == '_'){
 			board[i][j] = new BasicSquare(i,j,colour,locked);
 		}

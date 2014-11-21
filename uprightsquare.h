@@ -7,6 +7,7 @@ class UprightSquare: public Square{
 	public:
 	UprightSquare(int row, int col,int colour, bool locked);
 	~UprightSquare();
+	void print();
 	void notify();
 };
 

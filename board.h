@@ -24,6 +24,7 @@ class Board {
 
 	// Private stuff
 
+
 	void clearRow(int row);
 	void clearCol(int col);
 	void explode(int centerX, int centerY, int r);

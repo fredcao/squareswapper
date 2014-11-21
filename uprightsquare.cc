@@ -14,5 +14,33 @@ UprightSquare::UprightSquare(int row,int col,int colour=White,bool locked=false)
 UprightSquare::~UprightSquare(){}
 
 void UprightSquare::draw() { }
-void UprightSquare::notify() { }
+void UprightSquare::print() {
+
+	if (locked) {
+
+		cout << "l";
+
+	}
+	else {
+
+		cout << "_";
+
+	}
+
+	cout << "v";
+	cout << colour;
+
+}
+void UprightSquare::notify() {
+
+	if (locked) {
+
+		locked = false;
+
+		return;
+	}
+
+	// Else do stuff and notify textdisplay and Xwindow
+
+}
 

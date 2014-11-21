@@ -8,6 +8,7 @@ class BasicSquare: public Square{
 	public:
 	BasicSquare(int r, int c, int colour, bool locked);
 	~BasicSquare();
+	void print();
 	void notify();
 };
 

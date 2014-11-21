@@ -19,4 +19,23 @@ int Square::getType(){
 bool Square::getLocked(){
 	return locked;
 }
+void Square::print() {
+
+	if (locked) {
+
+		cout << "l";
+
+	}
+	else {
+
+		cout << "_";
+
+	}
+
+	cout << type;
+	cout << colour;
+
+}
+
+	
 void Square::notify(){}

@@ -7,6 +7,7 @@ class UnstableSquare: public Square{
 	public:
 	UnstableSquare(int row, int col, int colour, bool locked);
 	~UnstableSquare();
+	void print();
 	void notify();
 };
 

@@ -14,5 +14,35 @@ UnstableSquare::UnstableSquare(int row,int col,int colour=White,bool locked=fals
 UnstableSquare::~UnstableSquare(){}
 
 void UnstableSquare::draw() { }
-void UnstableSquare::notify() { }
+void UnstableSquare::print() {
+
+	if (locked) {
+
+		cout << "l";
+
+	}
+	else {
+
+		cout << "_";
+
+	}
+
+	cout << "b";
+	cout << colour;
+
+}
+void UnstableSquare::notify() {
+
+	if (locked) {
+
+		locked = false;
+
+		return;
+	}
+
+	// Else do stuff and notify textdisplay and Xwindow
+
+
+}
+
 

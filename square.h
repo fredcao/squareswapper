@@ -1,6 +1,8 @@
 #ifndef __SQUARE_H__
 #define __SQUARE_H__
 
+#include <iostream>
+
 class Square{
 	protected:
 	int row,col,colour,type;
@@ -16,6 +18,7 @@ class Square{
 	int getColour();
 	int getType();
 	bool getLocked();
+	virtual void print();
 	virtual void notify() = 0;
 };
 

@@ -82,6 +82,11 @@ int main() {
 			bi->restart();
 		
 		}
+		else if (cmd == "print") {
+
+			bi->printBoard();
+
+		}
 		else if (cmd == "info" || cmd == "debug") {
 
 			// For debugging purposes

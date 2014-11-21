@@ -13,5 +13,36 @@ LateralSquare::LateralSquare(int row,int col,int colour=White,bool locked=false)
 LateralSquare::~LateralSquare(){}
 
 void LateralSquare::draw() { }
-void LateralSquare::notify(){ }
+void LateralSquare::print() {
+
+	if (locked) {
+
+		cout << "l";
+
+	}
+	else {
+
+		cout << "_";
+
+	}
+
+	cout << "h";
+	cout << colour;
+
+}
+void LateralSquare::notify(){
+
+	if (locked) {
+
+		locked = false;
+
+		return;
+	}
+
+	// Else do stuff and notify textdisplay and Xwindow
+
+
+}
+
+
 

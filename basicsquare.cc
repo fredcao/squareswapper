@@ -15,5 +15,33 @@ BasicSquare::BasicSquare(int row,int col,int colour=White,bool locked=false) {
 BasicSquare::~BasicSquare(){}
 
 void BasicSquare::draw() { }
-void BasicSquare::notify(){ }
+void BasicSquare::print() {
+
+	if (locked) {
+
+		cout << "l";
+
+	}
+	else {
+
+		cout << "_";
+
+	}
+
+	cout << "_";
+	cout << colour;
+
+}
+void BasicSquare::notify() {
+
+	if (locked) {
+
+		locked = false;
+
+		return;
+	}
+
+	// Else do stuff and notify textdisplay and Xwindow
+
+}
 
