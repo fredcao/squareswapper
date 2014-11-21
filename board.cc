@@ -153,6 +153,17 @@ void Board::printBoard() {
 
 }
 
+void Board::setDisplay(TextDisplay *td) {
+	
+	this->td = td;
+
+}
+void Board::setWindow(Xwindow *xw) {
+
+	this->xw = xw;
+
+}
+
 void Board::cleanup() {
 
 	delete instance;

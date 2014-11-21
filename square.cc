@@ -19,6 +19,18 @@ int Square::getType(){
 bool Square::getLocked(){
 	return locked;
 }
+
+void Square::setDisplay(TextDisplay *td) {
+	
+	this->td = td;
+
+}
+void Square::setWindow(Xwindow *xw) {
+
+	this->xw = xw;
+
+}
+
 void Square::print() {
 
 	if (locked) {

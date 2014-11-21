@@ -2,11 +2,17 @@
 #define __SQUARE_H__
 
 #include <iostream>
+#include "textdisplay.h"
+#include "window.h"
 
 class Square{
 	protected:
 	int row,col,colour,type;
 	bool locked;
+
+	TextDisplay *td;
+	Xwindow *xw;
+
 	virtual void draw() = 0;
 	public:
 	enum { BasicSquare = 0, LateralSquare, UprightSquare, UnstableSquare, PsychedelicSquare };
@@ -18,6 +24,9 @@ class Square{
 	int getColour();
 	int getType();
 	bool getLocked();
+	void setDisplay(TextDisplay *td);
+	void setWindow(Xwindow *xw);
+	
 	virtual void print();
 	virtual void notify() = 0;
 };

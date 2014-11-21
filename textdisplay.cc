@@ -67,13 +67,14 @@ TextDisplay::~TextDisplay() {
 }
 
 // TextDisplay::notify(int r, int c, Square &sq)
-// Given r, c, sq, updates theDisplay at coordinates (r, c) to a 3 char
-// representation of sq, and updates the squareCounts
+// Given r, c, locked, type, colour, updates theDisplay at coordinates (r, c) to a 3 char
+// representation of the square, and updates the squareCounts
 
-void TextDisplay::notify(int oldType, Square &sq) {
-	
-	int r = sq.getRow();
-	int c = sq.getCol();
+void TextDisplay::notify(int r, int c, char locked, char type, char colour) {
+
+// TODO: fix implementation
+
+/*	
 	int type = sq.getType();
 
 	squareCount[oldType] --;
@@ -109,7 +110,7 @@ void TextDisplay::notify(int oldType, Square &sq) {
 	theDisplay[r][c][2] = sq.getColour() + '0';
 
 	squareCount[type]++;	
-
+*/
 }
 
 // operator<<(ostream &out, const TextDisplay &td)

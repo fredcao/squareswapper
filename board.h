@@ -43,7 +43,9 @@ class Board {
 	int getMovesLeft();
 	int getScore();
 	int getHighScore();
-	
+	void setDisplay(TextDisplay *td);
+	void setWindow(Xwindow *xw);
+		
 	void printBoard();
 	static void cleanup();	
 	

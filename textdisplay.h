@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <sstream>
-#include "square.h"
 
 
 class TextDisplay {
@@ -26,9 +25,9 @@ class TextDisplay {
 
 	/*
    	 * The TextDisplay is an observer of each Square. Squares call notify to 
-   	 * update the (r,c) location to be sq
+   	 * update the (r,c) location
    	 */
-  	void notify(int oldType, Square &sq);  
+  	void notify(int r, int c, char locked, char type, char colour);  
 
 	friend std::ostream &operator<<(std::ostream &out, const TextDisplay &td);
 
