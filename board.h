@@ -27,7 +27,7 @@ class Board {
 
 	void clearRow(int row);
 	void clearCol(int col);
-	void explode(int centerX, int centerY, int r);
+	void explode(int centerX, int centerY, int width);
 	void clearColour(int colour);
 
 	void clearBoard();
