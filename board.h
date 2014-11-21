@@ -30,6 +30,9 @@ class Board {
 	void explode(int centerX, int centerY, int width);
 	void clearColour(int colour);
 
+	int dropSquare(int currentRow, int col);
+	void dropFill();
+
 	void clearBoard();
 
 

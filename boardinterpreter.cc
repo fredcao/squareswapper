@@ -22,6 +22,17 @@ BoardInterpreter::~BoardInterpreter() {
 
 }
 
+void BoardInterpreter::remove(int r, int c) {
+
+	board[r][c]->notify();
+	delete board[r][c];
+}
+
+void BoardInterpreter::dropFillTemp() {
+
+	dropFill();
+
+}
 
 void BoardInterpreter::swap(int x, int y, int z) {
 
@@ -132,3 +143,4 @@ bool BoardInterpreter::textOnly() {
 	return textOnlyFlag;
 
 }
+

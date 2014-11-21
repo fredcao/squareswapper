@@ -87,6 +87,26 @@ int main() {
 			bi->printBoard();
 
 		}
+		else if (cmd == "remove") {
+
+			// TEMPORARY TESTING THING NEED TO DELETE LATER
+
+			int r;
+			int c;
+
+			ss >> r;
+			ss >> c;
+
+			bi->remove(r, c);	
+	
+		}
+		else if (cmd == "dropfill") {
+
+
+			bi->dropFillTemp();
+			// TEMPORARY TESTING THING NEED TO DELETE LATER
+
+		}
 		else if (cmd == "info" || cmd == "debug") {
 
 			// For debugging purposes

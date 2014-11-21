@@ -42,7 +42,7 @@ Board::~Board() {
 
 }
 
-// [ PUBLIC METHODS]
+// [ PUBLIC METHODS ]
 
 void Board::clearBoard() {
 
@@ -59,7 +59,7 @@ void Board::clearBoard() {
 }
 
 void Board::constructBoard() {
-	for (int i = 0; i < boardSize; i++) {
+/*	for (int i = 0; i < boardSize; i++) {
 
 		board[i] = new Square *[boardSize];
 
@@ -69,7 +69,7 @@ void Board::constructBoard() {
 	
 		}
 
-	}
+	}*/
 
 }
 
@@ -229,3 +229,53 @@ void Board::clearColour(int colour) {
 	// Of course, must check that the pointer isn't null before checking the colour
 
 }
+
+int Board::dropSquare(int currentRow, int col) {
+
+	currentRow--;
+
+	while ((currentRow >= 0) && (board[currentRow][col] == NULL)) {
+
+		currentRow--;
+
+	}
+
+	return currentRow;
+
+}
+
+void Board::dropFill() {
+
+	for (int j = 0; j < boardSize; j++) {
+
+		for (int i = boardSize - 1; i >= 0; i--) {
+
+			if (board[i][j] == NULL) {
+
+				int nextSq = dropSquare(i, j);
+
+				if (nextSq > 0) {
+
+					board[i][j] = board[nextSq][j];
+					board[nextSq][j] = NULL;
+
+				}
+				else {
+
+					// Fill with new random square
+					// TODO: implement this
+
+				}
+
+			}
+
+		}
+
+	}
+			
+
+}
+
+
+
+

@@ -50,4 +50,10 @@ void Square::print() {
 }
 
 	
-void Square::notify(){}
+void Square::notify(){
+
+	print();
+
+	cout << "deleted. " << endl;
+
+}
