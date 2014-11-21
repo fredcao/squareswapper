@@ -50,10 +50,8 @@ void Square::print() {
 }
 
 	
-void Square::notify(){
+bool Square::notify(){
 
-	print();
-
-	cout << "deleted. " << endl;
+	return false;
 
 }

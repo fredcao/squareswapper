@@ -31,15 +31,15 @@ void UnstableSquare::print() {
 	cout << colour;
 
 }
-void UnstableSquare::notify() {
+bool UnstableSquare::notify() {
 
 	if (locked) {
 
 		locked = false;
 
-		return;
 	}
 
+	return false;
 	// Else do stuff and notify textdisplay and Xwindow
 
 

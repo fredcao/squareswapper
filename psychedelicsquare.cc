@@ -31,15 +31,16 @@ void PsychedelicSquare::print() {
 	cout << colour;
 
 }
-void PsychedelicSquare::notify() {
+bool PsychedelicSquare::notify() {
 
 	if (locked) {
 
 		locked = false;
 
-		return;
 	}
 
+	
+	return false;
 	// Else do stuff and notify textdisplay and Xwindow
 
 

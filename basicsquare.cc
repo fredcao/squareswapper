@@ -32,14 +32,25 @@ void BasicSquare::print() {
 	cout << colour;
 
 }
-void BasicSquare::notify() {
+
+bool BasicSquare::notify() {
 
 	if (locked) {
 
 		locked = false;
 
-		return;
+		cout << "Unlocked" << endl;
+		return true;
+
 	}
+	else {
+
+		cout << "Need to delete" << endl;
+		return false;
+
+	}
+	
+	
 
 	// Else do stuff and notify textdisplay and Xwindow
 

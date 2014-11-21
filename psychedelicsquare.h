@@ -8,7 +8,7 @@ class PsychedelicSquare: public Square{
 	PsychedelicSquare(int row, int col, int colour,bool locked);
 	~PsychedelicSquare();
 	void print();
-	void notify();
+	bool notify();
 };
 
 #endif	

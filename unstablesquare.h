@@ -8,7 +8,7 @@ class UnstableSquare: public Square{
 	UnstableSquare(int row, int col, int colour, bool locked);
 	~UnstableSquare();
 	void print();
-	void notify();
+	bool notify();
 };
 
 #endif	

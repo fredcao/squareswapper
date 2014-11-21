@@ -28,7 +28,7 @@ class Square{
 	void setWindow(Xwindow *xw);
 	
 	virtual void print();
-	virtual void notify() = 0;
+	virtual bool notify() = 0;
 };
 
 #endif

@@ -9,7 +9,7 @@ class BasicSquare: public Square{
 	BasicSquare(int r, int c, int colour, bool locked);
 	~BasicSquare();
 	void print();
-	void notify();
+	bool notify();
 };
 
 #endif	

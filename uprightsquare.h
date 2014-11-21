@@ -8,7 +8,7 @@ class UprightSquare: public Square{
 	UprightSquare(int row, int col,int colour, bool locked);
 	~UprightSquare();
 	void print();
-	void notify();
+	bool notify();
 };
 
 #endif	

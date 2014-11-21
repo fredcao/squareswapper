@@ -123,9 +123,18 @@ void Board::printBoard() {
 		for (int j = 0; j < boardSize; j++) {
 
 
-			board[i][j]->print();
+			if (board[i][j]) {
 
-			cout << " ";
+				board[i][j]->print();
+
+				cout << " ";
+
+			}
+			else {
+
+				cout << "    ";
+
+			}
 /*
 
 			if (board[i][j]->getLocked()) {

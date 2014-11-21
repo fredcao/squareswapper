@@ -30,18 +30,18 @@ void LateralSquare::print() {
 	cout << colour;
 
 }
-void LateralSquare::notify(){
+bool LateralSquare::notify(){
 
 	if (locked) {
 
 		locked = false;
 
-		return;
 	}
 
 	// Else do stuff and notify textdisplay and Xwindow
 
 
+	return false;
 }
 
 

@@ -31,15 +31,15 @@ void UprightSquare::print() {
 	cout << colour;
 
 }
-void UprightSquare::notify() {
+bool UprightSquare::notify() {
 
 	if (locked) {
 
 		locked = false;
 
-		return;
 	}
 
+	return false;
 	// Else do stuff and notify textdisplay and Xwindow
 
 }

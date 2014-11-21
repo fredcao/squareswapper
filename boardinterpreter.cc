@@ -24,8 +24,15 @@ BoardInterpreter::~BoardInterpreter() {
 
 void BoardInterpreter::remove(int r, int c) {
 
-	board[r][c]->notify();
-	delete board[r][c];
+	cout << "Remove called" << endl;
+
+	if (!board[r][c]->notify()) {
+		delete board[r][c];
+	
+		board[r][c] = NULL;
+	}
+
+	//delete board[r][c];
 }
 
 void BoardInterpreter::dropFillTemp() {
