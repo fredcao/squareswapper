@@ -27,8 +27,6 @@ void BoardInterpreter::remove(int r, int c) {
 	cout << "Remove called" << endl;
 
 	if (!board[r][c]->notify()) {
-		delete board[r][c];
-	
 		board[r][c] = NULL;
 	}
 

@@ -24,6 +24,10 @@ class Board {
 
 	// Private stuff
 
+	void match3();
+	void match4();
+	void match5();
+	void matchL();
 
 	void clearRow(int row);
 	void clearCol(int col);

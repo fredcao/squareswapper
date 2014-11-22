@@ -46,6 +46,7 @@ bool BasicSquare::notify() {
 	else {
 
 		cout << "Need to delete" << endl;
+		delete this;
 		return false;
 
 	}

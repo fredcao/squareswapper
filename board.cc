@@ -26,6 +26,8 @@ Board::Board() : boardSize(10), level(0), movesLeft(-1), score(0), highscore(0),
 
 Board::~Board() {
 
+	clearBoard();
+
 	for (int i = 0; i < boardSize; i++) {
 
 	//	for (int j = 0; j < boardSize; j++) {
@@ -39,6 +41,8 @@ Board::~Board() {
 	}
 
 	delete [] board;
+	delete td;
+	delete xw;
 
 }
 
@@ -114,6 +118,17 @@ int Board::getHighScore() {
 
 }
 
+void Board::setDisplay(TextDisplay *td) {
+	
+	this->td = td;
+
+}
+void Board::setWindow(Xwindow *xw) {
+
+	this->xw = xw;
+
+}
+
 void Board::printBoard() {
 	
 	cout << "Board print: " << endl;
@@ -162,24 +177,39 @@ void Board::printBoard() {
 
 }
 
-void Board::setDisplay(TextDisplay *td) {
-	
-	this->td = td;
-
-}
-void Board::setWindow(Xwindow *xw) {
-
-	this->xw = xw;
-
-}
-
 void Board::cleanup() {
 
 	delete instance;
 
 }
 
-// [ PROTECTED AND RIVATE METHODS ]
+// [ PROTECTED AND PRIVATE METHODS ]
+
+void match3() {
+
+// Find horizontal and vertical match of threes and notify all squares that are part of the match
+// Also calls doEffect(type)
+
+}
+
+void match4() {
+
+// Basically match3 with but with 4
+
+}
+
+
+void match5() {
+
+// Basically match4 but with 5
+
+}
+
+void matchL() {
+
+// Basically match... with an L
+
+}
 
 void Board::clearRow(int row) {
 
@@ -263,7 +293,7 @@ void Board::dropFill() {
 
 				int nextSq = dropSquare(i, j);
 
-				if (nextSq > 0) {
+				if (nextSq >= 0) {
 
 					board[i][j] = board[nextSq][j];
 					board[nextSq][j] = NULL;

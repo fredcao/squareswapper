@@ -161,6 +161,8 @@ int main() {
 	}
 
 
+	delete bi;
+
 	return 0;
 
 }
