@@ -19,20 +19,19 @@ class Board {
 	int score;
 	int highscore;
 
+	Square **stack;
+
 	TextDisplay *td;
 	Xwindow *xw;
 
 	// Private stuff
 
-	void match3();
-	void match4();
-	void match5();
-	void matchL();
-
 	void clearRow(int row);
 	void clearCol(int col);
 	void explode(int centerX, int centerY, int width);
 	void clearColour(int colour);
+
+	void doEffect(Square &sq);
 
 	int dropSquare(int currentRow, int col);
 	void dropFill();

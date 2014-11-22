@@ -149,3 +149,29 @@ bool BoardInterpreter::textOnly() {
 
 }
 
+void match3() {
+
+// Find horizontal and vertical matches of 3
+// Notify the squares that are part of the match
+// Call doEffect(sq) for each square that are part of the match
+
+}
+
+void match4() {
+
+// Same thing as match3 except with 4
+
+}
+
+void match5() {
+
+// Same thing as match4 except...
+// Really this is match 5 or more as matching for example 10 gives you the same result
+
+}
+
+void matchL() {
+
+// Same thing as match5 except actually an L instead of line
+
+}

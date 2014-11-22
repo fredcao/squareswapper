@@ -185,31 +185,6 @@ void Board::cleanup() {
 
 // [ PROTECTED AND PRIVATE METHODS ]
 
-void match3() {
-
-// Find horizontal and vertical match of threes and notify all squares that are part of the match
-// Also calls doEffect(type)
-
-}
-
-void match4() {
-
-// Basically match3 with but with 4
-
-}
-
-
-void match5() {
-
-// Basically match4 but with 5
-
-}
-
-void matchL() {
-
-// Basically match... with an L
-
-}
 
 void Board::clearRow(int row) {
 
@@ -266,6 +241,18 @@ void Board::clearColour(int colour) {
 
 	// Given a colour, search through the whole board array and notify all Squares of colour
 	// Of course, must check that the pointer isn't null before checking the colour
+
+}
+
+void Board::doEffect(Square &sq) {
+
+	// To be implemented
+
+	// Maybe will use stack copies of the dynamically allocated squares
+
+	// Do effect
+
+	// Then notify the square
 
 }
 

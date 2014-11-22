@@ -13,6 +13,11 @@ class BoardInterpreter : public Board {
 	std::string file;
 	int startLevel;
 
+	void match3();
+	void match4();
+	void match5();
+	void matchL();
+
 	public:
 
 	BoardInterpreter();
