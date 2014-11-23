@@ -37,6 +37,32 @@ int main() {
 			bi->swap(x, y, z);
 
 		}
+//Testing for special math functions, remove later
+		else if (cmd == "clearRow"){
+			int row;
+			ss >> row;
+			bi->clearRow(row);
+		}
+		else if(cmd == "clearCol"){
+			int col;
+			ss >> col;
+			bi->clearCol(col);
+		}
+		else if(cmd == "explode"){
+			int x;
+			int y;
+			int width;
+			ss >> x;
+			ss >> y;
+			ss >> width;
+			bi->explode(x,y,width);
+		}
+		else if(cmd == "clearColour"){
+			int colour;
+			ss>>colour;
+			bi->clearColour(colour);
+		}
+			
 		else if (cmd == "hint") {
 
 			int *result = bi->hint();

@@ -25,12 +25,14 @@ class Board {
 	Xwindow *xw;
 
 	// Private stuff
-
+	public:			//TESTING, CHANGE BACK TO PROTECTED LATER
 	void clearRow(int row);
 	void clearCol(int col);
 	void explode(int centerX, int centerY, int width);
 	void clearColour(int colour);
+	
 
+	protected:
 	void doEffect(Square &sq);
 
 	int dropSquare(int currentRow, int col);
