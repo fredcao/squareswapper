@@ -282,27 +282,27 @@ void Board::doEffect(Square &sq) {
 	switch (type) {
 
 
-		case sq.BasicSquare:
+		case Square::BasicSquare:
 
 			// Do nothing
 			break;
 
-		case sq.LateralSquare:
+		case Square::LateralSquare:
 
 			// clearRow
 			break;
 
-		case sq.UprightSquare:
+		case Square::UprightSquare:
 			
 			//clearCol
 			break;
 
-		case sq.UnstableSquare:
+		case Square::UnstableSquare:
 
 			//explode
 			break;
 
-		case sq.PsychedelicSquare:
+		case Square::PsychedelicSquare:
 
 			// clearColour
 
