@@ -277,6 +277,44 @@ void Board::clearColour(int colour) {
 
 void Board::doEffect(Square &sq) {
 
+	int type = sq.getType();
+
+	switch (type) {
+
+
+		case sq.BasicSquare:
+
+			// Do nothing
+			break;
+
+		case sq.LateralSquare:
+
+			// clearRow
+			break;
+
+		case sq.UprightSquare:
+			
+			//clearCol
+			break;
+
+		case sq.UnstableSquare:
+
+			//explode
+			break;
+
+		case sq.PsychedelicSquare:
+
+			// clearColour
+
+			break;
+
+		default:
+
+			break;
+
+	}
+
+
 	// To be implemented
 
 	// Maybe will use stack copies of the dynamically allocated squares
