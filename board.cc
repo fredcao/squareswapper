@@ -77,6 +77,14 @@ void Board::constructBoard() {
 
 }
 
+Square *Board::getSquare() {
+
+	Square *temp = new BasicSquare();
+
+	return temp;
+	
+}
+
 Board *Board::getInstance() {
 
 	// If an instance doesn't exist yet, create one and call cleanup at exit	

@@ -33,6 +33,9 @@ class Board {
 	
 
 	protected:
+	
+	virtual Square *getSquare();
+
 	void doEffect(Square &sq);
 
 	int dropSquare(int currentRow, int col);
@@ -45,7 +48,7 @@ class Board {
 
 	Board();
 	virtual ~Board();
-	virtual void constructBoard(); 
+	virtual void constructBoard();
 	static Board *getInstance();
 	int getLevel();
 	int getMovesLeft();

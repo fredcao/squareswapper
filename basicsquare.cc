@@ -39,13 +39,11 @@ bool BasicSquare::notify() {
 
 		locked = false;
 
-		cout << "Unlocked" << endl;
 		return true;
 
 	}
 	else {
 
-		cout << "Need to delete" << endl;
 		delete this;
 		return false;
 

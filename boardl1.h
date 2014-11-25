@@ -15,7 +15,7 @@ class BoardL1 : public Board {
 	~BoardL1();
 
 	void constructBoard();
-
+	Square *getSquare();
 
 
 };

@@ -21,4 +21,8 @@ void BoardL0::constructBoard() {
 
 }
 
+Square *BoardL0::getSquare() {
 
+	return NULL:
+
+}
