@@ -154,7 +154,36 @@ void match3() {
 // Find horizontal and vertical matches of 3
 // Notify the squares that are part of the match
 // Call doEffect(sq) for each square that are part of the match
-
+	
+	int curColour;
+	for(int i=0;i < boardSize; i++){	//checking horizontal matches
+		for(int j=0;j < boardSize-2; j++){
+			if(!(board[i][j]&&board[i][j+1]&&board[i][j+2])){	//checking that not null
+				continue;
+			}
+			curColour=board[i][j]->getColour();
+			if(board[i][j+1]->getColour()==curColour && board[i][j+2]->getColour()==curColour){
+				board[i][j]->notify();
+				board[i][j+1]->notify();
+				board[i][j+2]->notify();
+				j+=3;
+			}
+		}
+	}
+	for(int j=0;j<boardSize;j++){		//checking vertical matches
+		for(int i=0;i<boardSize-2;i++){
+			if(!(board[i][j]&&board[i+1][j]&&board[i+2][j])){
+				continue;
+			}
+			curColour=board[i][j]->getColour();
+			if(board[i+1][j]->getColour()==curColour && board[i+2][j]->getColour()==curColour){
+				board[i][j]->notify();
+				board[i+1][j]->notify();
+				board[i+2][j]->notify();
+				i+=3;
+			}
+		}
+	}
 }
 
 void match4() {

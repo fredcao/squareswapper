@@ -62,6 +62,9 @@ int main() {
 			ss>>colour;
 			bi->clearColour(colour);
 		}
+		else if(cmd == "match3"){
+			bi->match3();
+		}	
 			
 		else if (cmd == "hint") {
 
