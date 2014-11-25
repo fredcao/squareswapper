@@ -36,10 +36,14 @@ bool UnstableSquare::notify() {
 	if (locked) {
 
 		locked = false;
+		return true;
 
 	}
-
-	return false;
+	else {
+		delete this;
+		return false;
+	
+	}
 	// Else do stuff and notify textdisplay and Xwindow
 
 

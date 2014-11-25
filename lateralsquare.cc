@@ -36,12 +36,20 @@ bool LateralSquare::notify(){
 
 		locked = false;
 
+		return true;
+
+	}
+	else {
+
+		delete this;
+
+		return false;
+
 	}
 
 	// Else do stuff and notify textdisplay and Xwindow
 
 
-	return false;
 }
 
 

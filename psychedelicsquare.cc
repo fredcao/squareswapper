@@ -36,11 +36,16 @@ bool PsychedelicSquare::notify() {
 	if (locked) {
 
 		locked = false;
+		return true;
 
 	}
+	else {
 
+		delete this;
 	
-	return false;
+		return false;
+
+	}
 	// Else do stuff and notify textdisplay and Xwindow
 
 

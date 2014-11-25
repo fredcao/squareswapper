@@ -36,10 +36,16 @@ bool UprightSquare::notify() {
 	if (locked) {
 
 		locked = false;
+		return true;
 
 	}
+	else {
 
-	return false;
+		delete this;
+
+		return false;
+
+	}
 	// Else do stuff and notify textdisplay and Xwindow
 
 }
