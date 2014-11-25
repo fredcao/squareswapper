@@ -79,9 +79,7 @@ void Board::constructBoard() {
 
 Square *Board::getSquare() {
 
-	Square *temp = new BasicSquare();
-
-	return temp;
+	return instance->getSquare();
 	
 }
 
