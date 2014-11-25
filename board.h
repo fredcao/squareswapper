@@ -4,6 +4,7 @@
 #include "square.h"
 #include "textdisplay.h"
 #include "window.h"
+#include "PRNG.h"
 
 class Board {
 
@@ -36,7 +37,7 @@ class Board {
 	
 	virtual Square *getSquare();
 
-	void doEffect(Square &sq);
+	void doEffect(Square *sq);
 
 	int dropSquare(int currentRow, int col);
 	void dropFill();

@@ -89,7 +89,27 @@ Board *Board::getInstance() {
 
 	if (!instance) {
 
-		instance = new Board();
+		if (level == 0) {
+
+			instance = new BoardL0();
+
+		}
+		else if (level == 1) {
+		
+			instance = new BoardL1();
+		
+		}
+		else if (level == 2) {
+
+			instance = new BoardL2();
+
+		}
+		else {
+
+			instance = new Board();
+
+		}
+
 		atexit(cleanup);
 
 	}
@@ -281,34 +301,40 @@ void Board::clearColour(int colour) {
 	}
 }
 
-void Board::doEffect(Square &sq) {
+void Board::doEffect(Square *sq, int width = 3) {
 
-	int type = sq.getType();
+	int type = sq->getType();
 
 	switch (type) {
 
 
 		case Square::BasicSquare:
 
+			sq->notify();
 			// Do nothing
 			break;
 
 		case Square::LateralSquare:
 
+			clearRow(sq->getRow());
 			// clearRow
 			break;
 
 		case Square::UprightSquare:
 			
+			clearCol(sq->getCol());
 			//clearCol
 			break;
 
 		case Square::UnstableSquare:
 
+			explode(sq->getRow(), sq->getCol(), width);
 			//explode
 			break;
 
 		case Square::PsychedelicSquare:
+
+			clearColour(sq->getColour());
 
 			// clearColour
 
@@ -320,14 +346,6 @@ void Board::doEffect(Square &sq) {
 
 	}
 
-
-	// To be implemented
-
-	// Maybe will use stack copies of the dynamically allocated squares
-
-	// Do effect
-
-	// Then notify the square
 
 }
 
