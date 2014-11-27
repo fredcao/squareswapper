@@ -2,6 +2,11 @@
 #define __BOARD_H__
 
 #include "square.h"
+#include "basicsquare.h"
+#include "lateralsquare.h"
+#include "uprightsquare.h"
+#include "unstablesquare.h"
+#include "psychedelicsquare.h"
 #include "textdisplay.h"
 #include "window.h"
 #include "PRNG.h"
@@ -12,13 +17,22 @@ class Board {
 
 	static Board *instance;
 
-	Square ***board;
+	static Square ***board;
 	
 	int boardSize;
 	int level;
 	int movesLeft;
 	int score;
 	int highscore;
+
+	// Options set by user
+	bool textOnlyFlag;
+	int seed;
+	std::string file;
+	std::string colourInput;
+	int colourInputIndex;
+	int startLevel;
+
 
 	Square **stack;
 
@@ -35,9 +49,9 @@ class Board {
 
 	protected:
 	
-	virtual Square *getSquare();
+	virtual Square *getSquare(int r, int c);
 
-	void doEffect(Square *sq);
+	void doEffect(Square *sq, int width);
 
 	int dropSquare(int currentRow, int col);
 	void dropFill();

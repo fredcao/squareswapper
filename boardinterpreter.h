@@ -2,17 +2,15 @@
 #define __INTERPRETER_H__
 
 #include "board.h"
+#include "boardl0.h"
+#include "boardl1.h"
+#include "boardl2.h"
 
 class BoardInterpreter : public Board {
 
 
 	// Private stuff
-
-	bool textOnlyFlag;
-	int seed;
-	std::string file;
-	int startLevel;
-
+	public: // TEmp
 	void match3();
 	void match4();
 	void match5();
@@ -22,6 +20,8 @@ class BoardInterpreter : public Board {
 
 	BoardInterpreter();
 	~BoardInterpreter();
+
+	void startGame();
 
 	void swap(int x, int y, int z);
 	int *hint();

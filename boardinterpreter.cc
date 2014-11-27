@@ -9,8 +9,7 @@
 
 using namespace std;
 
-BoardInterpreter::BoardInterpreter() : textOnlyFlag(false), startLevel(0) {
-
+BoardInterpreter::BoardInterpreter() {
 
 
 
@@ -38,6 +37,39 @@ void BoardInterpreter::dropFillTemp() {
 	dropFill();
 
 }
+
+void BoardInterpreter::startGame() {
+
+	delete instance;
+
+	level = startLevel;
+
+	cout << "Starting game at level ... " << level << endl;
+
+	if (level == 0) {
+
+		instance = new BoardL0();
+
+	}
+	else if (level == 1) {
+
+		instance = new BoardL1();
+
+	}
+	else if (level == 2) {
+
+		instance = new BoardL2();
+
+	}
+	else {
+
+		instance = new BoardL0();
+
+	}
+
+	instance->constructBoard();
+
+}	
 
 void BoardInterpreter::swap(int x, int y, int z) {
 
@@ -149,7 +181,7 @@ bool BoardInterpreter::textOnly() {
 
 }
 
-void match3() {
+void BoardInterpreter::match3() {
 
 // Find horizontal and vertical matches of 3
 // Notify the squares that are part of the match
@@ -186,20 +218,20 @@ void match3() {
 	}
 }
 
-void match4() {
+void BoardInterpreter::match4() {
 
 // Same thing as match3 except with 4
 
 }
 
-void match5() {
+void BoardInterpreter::match5() {
 
 // Same thing as match4 except...
 // Really this is match 5 or more as matching for example 10 gives you the same result
 
 }
 
-void matchL() {
+void BoardInterpreter::matchL() {
 
 // Same thing as match5 except actually an L instead of line
 

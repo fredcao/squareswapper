@@ -1,15 +1,54 @@
 
 #include <iostream>
 #include <fstream>
-
+#include <cstdlib>
 #include "boardinterpreter.h"
 
 using namespace std;
 
-int main() {
-
+int main(int argc, char* argv[]) {
 
 	BoardInterpreter *bi = new BoardInterpreter();
+
+	for (int i = 1; i < argc; i++) {
+
+
+		// Process options
+
+		string arg = argv[i];
+
+
+		if (arg == "-text") {
+
+			bi->setTextOnly(true);
+
+		}
+		else if (arg == "-seed") {
+
+			i++;
+
+			bi->setSeed(atoi(argv[i]));
+
+		}
+		else if (arg == "-scriptfile") {
+
+			i++;
+			
+			bi->setFile(argv[i]);
+
+		}
+		else if (arg == "-startlevel") {
+
+			i++;
+		
+			bi->setStartLevel(atoi(argv[i]));
+
+		}
+
+
+	}
+
+	bi->startGame();
 
 	string input;
 
@@ -142,48 +181,7 @@ int main() {
 
 		}
 
-		// Process options
 
-		ss >> option;
-
-		while (!ss.eof()) {
-
-			if (option == "-text") {
-
-				bi->setTextOnly(true);
-
-			}
-			else if (option == "-seed") {
-
-				int seed;
-				
-				ss >> seed;
-			
-				bi->setSeed(seed);
-
-			}
-			else if (option == "-scriptfile") {
-
-				string fileName;
-
-				ss >> fileName;
-
-				bi->setFile(fileName);
-
-			}
-			else if (option == "-startlevel") {
-
-				int level;
-
-				ss >> level;
-
-				bi->setStartLevel(level);
-
-			}
-
-			ss >> option;
-
-		}
 
 		getline(cin, input);
 

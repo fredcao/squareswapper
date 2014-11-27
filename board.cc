@@ -5,11 +5,19 @@
 using namespace std;
 
 Board *Board::instance = NULL;	// Set initial value for static instance in Board
+Square ***Board::board = NULL;
+//int Board::level = 0;
+//int Board::movesLeft = -1;
+//int Board::highscore = 0;
 
-Board::Board() : boardSize(10), level(0), movesLeft(-1), score(0), highscore(0), td(NULL), xw(NULL) { 
+Board::Board() : boardSize(10), level(0), movesLeft(-1), score(0), highscore(0),
+	textOnlyFlag(false), startLevel(0), td(NULL), xw(NULL) { 
+
+	/*
 
 	board = new Square**[boardSize];
 
+	
 	for (int i = 0; i < boardSize; i++) {
 
 		board[i] = new Square *[boardSize];
@@ -20,7 +28,12 @@ Board::Board() : boardSize(10), level(0), movesLeft(-1), score(0), highscore(0),
 	
 		}
 
+	
 	}
+
+	cout << "[Board Initialized]" << endl;
+
+	*/
 
 }
 
@@ -77,9 +90,9 @@ void Board::constructBoard() {
 
 }
 
-Square *Board::getSquare() {
+Square *Board::getSquare(int r, int c) {
 
-	return instance->getSquare();
+	return instance->getSquare(r, c);
 	
 }
 
@@ -89,6 +102,8 @@ Board *Board::getInstance() {
 
 	if (!instance) {
 
+		instance = new Board();
+/*
 		if (level == 0) {
 
 			instance = new BoardL0();
@@ -108,7 +123,7 @@ Board *Board::getInstance() {
 
 			instance = new Board();
 
-		}
+		}*/
 
 		atexit(cleanup);
 
@@ -381,6 +396,7 @@ void Board::dropFill() {
 				}
 				else {
 
+					board[i][j] = getSquare(i, j);
 					// Fill with new random square
 					// TODO: implement this
 
