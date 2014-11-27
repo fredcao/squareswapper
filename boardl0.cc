@@ -89,7 +89,7 @@ void BoardL0::constructBoard() {
 
 Square *BoardL0::getSquare(int r, int c) {
 
-	int colour = colourInput.at(colourInputIndex);
+	int colour = colourInput.at(colourInputIndex) - '0';
 
 	Square *temp;
 

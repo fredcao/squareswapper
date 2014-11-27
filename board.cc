@@ -397,6 +397,8 @@ void Board::dropFill() {
 				else {
 
 					board[i][j] = getSquare(i, j);
+
+				//	cout << "new square: " << board[i][j]->getLocked() << board[i][j]->getType() << board[i][j]->getColour() << endl;
 					// Fill with new random square
 					// TODO: implement this
 
