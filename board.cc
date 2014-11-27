@@ -39,6 +39,8 @@ Board::Board() : boardSize(10), level(0), movesLeft(-1), score(0), highscore(0),
 
 Board::~Board() {
 
+	cout << "Board destructor called" << endl;
+/*
 	clearBoard();
 
 	for (int i = 0; i < boardSize; i++) {
@@ -54,8 +56,10 @@ Board::~Board() {
 	}
 
 	delete [] board;
-	delete td;
-	delete xw;
+	//delete td;
+	//delete xw;
+
+*/
 
 }
 
@@ -102,7 +106,7 @@ Board *Board::getInstance() {
 
 	if (!instance) {
 
-		instance = new Board();
+//		instance = new Board();
 /*
 		if (level == 0) {
 
@@ -125,7 +129,7 @@ Board *Board::getInstance() {
 
 		}*/
 
-		atexit(cleanup);
+//		atexit(cleanup);
 
 	}
 
@@ -219,6 +223,8 @@ void Board::printBoard() {
 }
 
 void Board::cleanup() {
+
+	cout << "Cleanup called" << endl;
 
 	delete instance;
 

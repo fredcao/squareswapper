@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #include "basicsquare.h"
 #include "lateralsquare.h"
 #include "uprightsquare.h"
@@ -17,7 +18,6 @@ BoardInterpreter::BoardInterpreter() {
 }
 
 BoardInterpreter::~BoardInterpreter() {
-
 
 }
 
@@ -48,6 +48,7 @@ void BoardInterpreter::startGame() {
 
 	if (level == 0) {
 
+		cout << "Create new BoardL0" << endl;
 		instance = new BoardL0();
 
 	}
@@ -67,9 +68,12 @@ void BoardInterpreter::startGame() {
 
 	}
 
+	atexit(cleanup);	
+
 	instance->constructBoard();
 
 }	
+
 
 void BoardInterpreter::swap(int x, int y, int z) {
 

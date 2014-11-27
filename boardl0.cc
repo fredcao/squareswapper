@@ -5,8 +5,6 @@ using namespace std;
 
 BoardL0::BoardL0() {
 
-
-
 	board = new Square** [boardSize];
 
 	for (int i = 0; i < boardSize; i++) {
@@ -22,8 +20,25 @@ BoardL0::BoardL0() {
 
 BoardL0::~BoardL0() {
 
+	cout << "BoardL0 constructor called" << endl;
 
+	clearBoard();
 
+	for (int i = 0; i < boardSize; i++) {
+
+	//	for (int j = 0; j < boardSize; j++) {
+
+	//		delete board[i][j];
+
+	//	}
+
+		delete [] board[i];
+
+	}
+
+	delete [] board;
+	//delete td;
+	//delete xw;
 }
 
 void BoardL0::constructBoard() {

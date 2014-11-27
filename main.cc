@@ -187,7 +187,9 @@ int main(int argc, char* argv[]) {
 
 	}
 
-
+//	bi->endGame();
+//	delete bi->getInstance();
+//	Board::cleanup();
 	delete bi;
 
 	return 0;
