@@ -81,8 +81,15 @@ void BoardInterpreter::swap(int x, int y, int z) {
 }
 
 int *BoardInterpreter::hint() {
-
-	return new int[0];
+/*	int curColour;
+	int ans[3];
+	for(int i=0;i<boardSize;i++){		//find horizontal row of two
+		for(int j=0;j<boardSize-1;j++){
+			if(!(board[i][j]&&board[i][j+1])){
+				continue;
+			}
+			curColour=board[i][j]->getColour();
+			*/
 
 }
 

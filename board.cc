@@ -1,7 +1,6 @@
 #include <fstream>
 #include <cstdlib>
 
-
 #include "board.h"
 
 using namespace std;
