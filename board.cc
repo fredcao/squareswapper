@@ -1,17 +1,26 @@
-
+#include <fstream>
 #include <cstdlib>
+
+
 #include "board.h"
 
 using namespace std;
 
 Board *Board::instance = NULL;	// Set initial value for static instance in Board
 Square ***Board::board = NULL;
-//int Board::level = 0;
-//int Board::movesLeft = -1;
-//int Board::highscore = 0;
+int Board::boardSize = 10;
+int Board::level = 0;
+int Board::movesLeft = -1;
+int Board::score = 0;
+int Board::highscore = 0;
+bool Board::textOnlyFlag = false;
+int Board::seed = -1;
+string Board::file = "";
+string Board::colourInput = "";
+int Board::colourInputIndex = 0;
+int Board::startLevel = 0;
 
-Board::Board() : boardSize(10), level(0), movesLeft(-1), score(0), highscore(0),
-	textOnlyFlag(false), startLevel(0), td(NULL), xw(NULL) { 
+Board::Board() : td(NULL), xw(NULL) { 
 
 	/*
 
@@ -92,6 +101,56 @@ void Board::constructBoard() {
 
 	}*/
 
+}
+
+void Board::readFile() {
+
+//	cout << "Readfile: " << file << endl;
+
+	ifstream fs(file.c_str());
+
+	string input;
+
+	for (int i = 0; i < boardSize; i++) {
+
+		for (int j = 0; j < boardSize; j++) {
+
+		fs >> input;
+
+		bool locked = (input.at(0) == 'l') ? true : false;
+		char type = input.at(1);
+		int colour = input.at(2) - '0';
+
+		if(type == '_'){
+			board[i][j] = new BasicSquare(i,j,colour,locked);
+		}
+		else if(type == 'h'){
+			board[i][j] = new LateralSquare(i,j,colour,locked);
+		}
+		else if(type == 'v'){
+			board[i][j] = new UprightSquare(i,j,colour,locked);
+		}
+		else if(type == 'b'){
+			board[i][j] = new UnstableSquare(i,j,colour,locked);
+		}
+		else if(type == 'p'){
+			board[i][j] = new PsychedelicSquare(i,j,colour,locked);
+		}
+
+
+		//Ignore this for now
+		//board[i][j]->notifyTD();
+		//board[i][j]->draw();
+				
+		
+		
+
+		}
+
+	}
+
+//	cout << "Finished read file, print: " << endl;
+//	printBoard();
 }
 
 Square *Board::getSquare(int r, int c) {

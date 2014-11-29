@@ -19,19 +19,19 @@ class Board {
 
 	static Square ***board;
 	
-	int boardSize;
-	int level;
-	int movesLeft;
-	int score;
-	int highscore;
+	static int boardSize;
+	static int level;
+	static int movesLeft;
+	static int score;
+	static int highscore;
 
 	// Options set by user
-	bool textOnlyFlag;
-	int seed;
-	std::string file;
-	std::string colourInput;
-	int colourInputIndex;
-	int startLevel;
+	static bool textOnlyFlag;
+	static int seed;
+	static std::string file;
+	static std::string colourInput;
+	static int colourInputIndex;
+	static int startLevel;
 
 
 	Square **stack;
@@ -48,6 +48,8 @@ class Board {
 	
 
 	protected:
+
+	void readFile();
 	
 	virtual Square *getSquare(int r, int c);
 

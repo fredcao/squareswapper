@@ -43,6 +43,17 @@ BoardL0::~BoardL0() {
 
 void BoardL0::constructBoard() {
 
+	//cout << "stratLevel: " << startLevel << "File: " << file << "length: " << file.length() << endl;
+
+	if (startLevel == 0 && file.length() > 0) {
+
+		//cout << "Read file called" << endl;
+
+		readFile();
+		return;
+
+	}
+
 	ifstream fs("sequence.txt");
 
 	string input;
