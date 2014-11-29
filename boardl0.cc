@@ -20,7 +20,7 @@ BoardL0::BoardL0() {
 
 BoardL0::~BoardL0() {
 
-	cout << "BoardL0 constructor called" << endl;
+	cout << "BoardL0 destructor called" << endl;
 
 	clearBoard();
 
@@ -42,6 +42,8 @@ BoardL0::~BoardL0() {
 }
 
 void BoardL0::constructBoard() {
+
+	clearBoard();
 
 	//cout << "stratLevel: " << startLevel << "File: " << file << "length: " << file.length() << endl;
 
