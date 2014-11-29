@@ -383,14 +383,23 @@ void Board::clearColour(int colour) {
 
 void Board::doEffect(Square *sq, int width = 3) {
 
+	if (sq->getLocked()) {
+
+		sq->notify();
+
+		return;
+	}
+	int row = sq->getRow();
+	int col = sq->getCol();
 	int type = sq->getType();
 
 	switch (type) {
 
 
-		case Square::BasicSquare:
-
-			sq->notify();
+		case Square::BasicSquare:		
+			if(!sq->notify()){
+				board[row][col]=NULL;
+			}
 			// Do nothing
 			break;
 
@@ -425,8 +434,6 @@ void Board::doEffect(Square *sq, int width = 3) {
 			break;
 
 	}
-
-
 }
 
 int Board::dropSquare(int currentRow, int col) {

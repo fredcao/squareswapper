@@ -103,6 +103,15 @@ int main(int argc, char* argv[]) {
 		}
 		else if(cmd == "match3"){
 			bi->match3();
+		}
+		else if(cmd == "match4"){
+			bi->match4();
+		}
+		else if(cmd == "match5"){
+			bi->match5();
+		}
+		else if(cmd == "matchL"){
+			bi->matchL();
 		}	
 			
 		else if (cmd == "hint") {
