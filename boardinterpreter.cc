@@ -81,15 +81,119 @@ void BoardInterpreter::swap(int x, int y, int z) {
 }
 
 int *BoardInterpreter::hint() {
-/*	int curColour;
+	int curColour;
 	int ans[3];
 	for(int i=0;i<boardSize;i++){		//find horizontal row of two
 		for(int j=0;j<boardSize-1;j++){
-			if(!(board[i][j]&&board[i][j+1])){
-				continue;
-			}
 			curColour=board[i][j]->getColour();
-			*/
+			if(board[i][j+1]->getColour()==curColour){	//row of two, check six cases
+				if(i-1>=0&&j-1>=0&&board[i-1][j-1]->getColour()==curColour){
+					ans[0]=i-1;
+					ans[1]=j-1;
+					ans[2]=1;
+					return ans;
+				}
+				if(i-1>=0&&j+2<=9&&board[i-1][j+2]->getColour()==curColour){
+					ans[0]=i-1;
+					ans[1]=j+2;
+					ans[2]=1;
+					return ans;
+				}
+				if(i+1<=9&&j-1>=0&&board[i+1][j-1]->getColour()==curColour){
+					ans[0]=i+1;
+					ans[1]=j-1;
+					ans[2]=0;
+					return ans;
+				}
+				if(i+1<=9&&j+2<=9&&board[i+1][j+2]->getColour()==curColour){
+					ans[0]=i+1;
+					ans[1]=j+2;
+					ans[2]=0;
+					return ans;
+				}
+				if(j-2>=0&&board[i][j-2]->getColour()==curColour){
+					ans[0]=i;
+					ans[1]=j-2;
+					ans[2]=3;
+					return ans;
+				}
+				if(j+3<=9&&board[i][j+3]->getColour()==curColour){
+					ans[0]=i;
+					ans[1]=j+3;
+					ans[2]=2;
+					return ans;
+				}
+			}
+			if(i-1>=0&&j+2<=9&&board[i-1][j+1]->getColour()==curColour&&board[i][j+2]->getColour()==curColour){	//check horizontal triangle cases
+				ans[0]=i-1;
+				ans[1]=j+1;
+				ans[2]=1;
+				return ans;
+			}
+			if(i+1<=9&&j+2<=9&&board[i+1][j+1]->getColour()==curColour&&board[i][j+2]->getColour()==curColour){
+				ans[0]=i+1;
+				ans[1]=j+1;
+				ans[2]=0;
+				return ans;
+			}
+		}
+	}
+	for(int j=0;j<boardSize;j++){
+		for(int i=0;i<boardSize-1;i++){
+			curColour=board[i][j]->getColour();
+			if(board[i+1][j]->getColour()==curColour){
+				if(i-1>=0&&j-1>=0&&board[i-1][j-1]->getColour()==curColour){
+					ans[0]=i-1;
+					ans[1]=j-1;
+					ans[2]=3;
+					return ans;
+				}
+				if(i-1>=0&&j+1<=9&&board[i-1][j+1]->getColour()==curColour){
+					ans[0]=i-1;
+					ans[1]=j+1;
+					ans[2]=2;
+					return ans;
+				}
+				if(i+2<=9&&j-1>=0&&board[i+2][j-1]->getColour()==curColour){
+					ans[0]=i+2;
+					ans[1]=j-1;
+					ans[2]=3;
+					return ans;
+				}
+				if(i+2<=9&&j+1<=9&&board[i+2][j+1]->getColour()==curColour){
+					ans[0]=i+2;
+					ans[1]=j+1;
+					ans[2]=2;
+					return ans;
+				}
+				if(i-2>=0&&board[i-2][j]->getColour()==curColour){
+					ans[0]=i-2;
+					ans[1]=j;
+					ans[2]=1;
+					return ans;
+				}
+				if(i+3<=9&&board[i+3][j]->getColour()==curColour){
+					ans[0]=i+3;
+					ans[1]=j;
+					ans[2]=0;
+					return ans;
+				}
+			}
+			if(i+2<=9&&j-1>=0&&board[i+1][j-1]->getColour()==curColour&&board[i+2][j]->getColour()==curColour){
+				ans[0]=i+1;
+				ans[1]=j-1;
+				ans[2]=3;
+				return ans;
+			}
+			if(i+2<=9&&j+1<=9&&board[i+1][j+1]->getColour()==curColour&&board[i+2][j]->getColour()==curColour){
+				ans[0]=i+1;
+				ans[1]=j+1;
+				ans[2]=2;
+				return ans;
+			}
+		}
+	}
+	return NULL;			
 
 }
 
