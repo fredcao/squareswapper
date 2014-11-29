@@ -149,6 +149,14 @@ void Board::readFile() {
 
 	}
 
+	fs >> colourInput;
+
+	if (fs.eof()) {
+
+		fs.clear();
+
+	}
+
 //	cout << "Finished read file, print: " << endl;
 //	printBoard();
 }
