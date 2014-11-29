@@ -32,12 +32,16 @@ int main(int argc, char* argv[]) {
 		}
 		else if (arg == "-scriptfile") {
 
+			cout << "Scriptfile " << argv[i+1] << endl;
+
 			i++;
 			
 			bi->setFile(argv[i]);
 
 		}
 		else if (arg == "-startlevel") {
+
+			cout << "Startlevel " << argv[i+1] << endl;
 
 			i++;
 		
@@ -47,6 +51,8 @@ int main(int argc, char* argv[]) {
 
 
 	}
+
+	//cout << "Call start game" << endl;
 
 	bi->startGame();
 

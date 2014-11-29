@@ -8,6 +8,8 @@ class BoardL1 : public Board {
 
 	// Private stuff
 
+	int count5;
+
 
 	public:
 
