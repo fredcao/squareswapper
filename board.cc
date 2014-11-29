@@ -14,6 +14,7 @@ int Board::score = 0;
 int Board::highscore = 0;
 bool Board::textOnlyFlag = false;
 int Board::seed = -1;
+bool Board::seeded = false;
 string Board::file = "";
 string Board::colourInput = "";
 int Board::colourInputIndex = 0;
@@ -150,6 +151,34 @@ void Board::readFile() {
 
 //	cout << "Finished read file, print: " << endl;
 //	printBoard();
+}
+
+int Board::getRand(int x, int y) {
+
+// getRand(0, 10) ->
+
+// getRand(5, 20) -> getRand(0, 15) + 5
+
+	if (!seeded) {
+
+		if (seed == -1) {
+
+			srand(time(NULL));
+
+		}
+		else {
+
+			srand(seed);
+
+		}
+
+		seeded = true;
+
+	}
+
+	return x + rand() % (y - x + 1);
+
+
 }
 
 Square *Board::getSquare(int r, int c) {

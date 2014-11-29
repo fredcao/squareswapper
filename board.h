@@ -28,6 +28,7 @@ class Board {
 	// Options set by user
 	static bool textOnlyFlag;
 	static int seed;
+	static bool seeded;
 	static std::string file;
 	static std::string colourInput;
 	static int colourInputIndex;
@@ -50,6 +51,8 @@ class Board {
 	protected:
 
 	void readFile();
+	
+	int getRand(int x, int y);
 	
 	virtual Square *getSquare(int r, int c);
 
