@@ -62,7 +62,7 @@ Xwindow::~Xwindow() {
 
 void Xwindow::drawRectangle(int x, int y, int width, int height, int colour, bool locked, int type) {
 
-  cout << "x: " << x << " y: " << y << " width: " << width << " height: " << height << " colour: " << colour << "locked: " << locked << " type: " << type << endl;
+//  cout << "x: " << x << " y: " << y << " width: " << width << " height: " << height << " colour: " << colour << "locked: " << locked << " type: " << type << endl;
 
   XSetForeground(d, gc, colours[colour]);
   XFillRectangle(d, w, gc, x, y, width, height);
@@ -73,7 +73,7 @@ void Xwindow::drawRectangle(int x, int y, int width, int height, int colour, boo
 
   if (type == 1) {
 
-	cout << "Drawing Lateral" << endl;
+//	cout << "Drawing Lateral" << endl;
 
 	XFillRectangle(d, w, gc, x, y + height / 3 - 2, width, 5);
 
@@ -82,7 +82,7 @@ void Xwindow::drawRectangle(int x, int y, int width, int height, int colour, boo
   }
   else if (type == 2) {
 
-	cout << "Drawing Upright" << endl;
+//	cout << "Drawing Upright" << endl;
 
 	XFillRectangle(d, w, gc, x + width / 3 - 2, y, 5, height);
 	
@@ -91,7 +91,7 @@ void Xwindow::drawRectangle(int x, int y, int width, int height, int colour, boo
   }
   else if (type == 3) {
 
-	cout << "Drawing Unstable" << endl;
+//	cout << "Drawing Unstable" << endl;
 
 	copyHeight /= 2;
 	copyWidth /= 2;
@@ -101,7 +101,7 @@ void Xwindow::drawRectangle(int x, int y, int width, int height, int colour, boo
   }
   else if (type == 4) {
 
-	cout << "Drawing Psychedelic" << endl;
+//	cout << "Drawing Psychedelic" << endl;
 
 	int len = 6;
 
@@ -160,10 +160,6 @@ void Xwindow::drawString(int x, int y, int level, int score, int highscore, int 
   stringstream ss4;
 
   string str;
-	cout << "level: " << level << endl;
-	cout << "score: " << score << endl;
-	cout << "highscore: " << highscore << endl;
-	cout << "movesLeft: " << movesLeft << endl;
   string str1 = "SQUARESWAPPER 5000";
   string str2 = "BY FRED CAO AND KEVIN XUE";
   ss1 << level;

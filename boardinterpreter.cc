@@ -44,10 +44,6 @@ void BoardInterpreter::startGame() {
 
 	delete instance;
 
-//	draw();
-
-	level = startLevel;
-
 	cout << "Starting game at level ... " << level << endl;
 
 	if (level == 0) {
@@ -74,9 +70,13 @@ void BoardInterpreter::startGame() {
 
 	atexit(cleanup);	
 
-	instance->constructBoard();
+	cout << "Before constructBoard" << endl;
 
-	draw();
+	instance->constructBoard();
+	
+	cout << "After constructBoard" << endl;
+
+	//draw();
 
 }	
 
@@ -111,18 +111,36 @@ void BoardInterpreter::swap(int x, int y, int z) {
 	}
 
 	int points;
-	int newPoints = -1;
+	int newSquares = -1;
+	int newPoints;
 	int n = 1;
 			
-	while (newPoints != 0) {
+	while (newSquares != 0) {
 
-		newPoints = 0;	
+		newSquares = 0;	
+		newPoints = 0;
 
-		//newPoints += matchL();
-		//newPoints += match5();
-		//newPoints += match4();
-		//newPoints += match3();
+		//newSquares += matchL();
+		//newSquares += match5();
+		//newSquares += match4();
+		//newSquares += match3();
 
+		if (newSquares == 4) {
+		
+			newPoints += 2 * 4;
+	
+		}
+		else if (newSquares == 5) {
+
+			newPoints += 3 * 5;
+
+		}
+		else if (newSquares > 5) {
+
+			newPoints += 4 * newSquares;
+
+		}
+			
 		points += newPoints * static_cast<int>(pow(2, n));
 
 		n++;
@@ -140,6 +158,8 @@ void BoardInterpreter::swap(int x, int y, int z) {
 		highscore = score;
 
 	}
+
+	draw();
 
 
 	// 0 N
@@ -263,6 +283,7 @@ int *BoardInterpreter::hint() {
 			}
 		}
 	}
+
 	return NULL;			
 
 }
@@ -270,17 +291,66 @@ int *BoardInterpreter::hint() {
 void BoardInterpreter::scramble() {
 
 
+	int *hintResult = hint();
+
+	if (hintResult) {
+
+		delete hintResult;
+
+		return;
+
+	}
+
+	int times = getRand(5, 30);
+
+	// Scramble times times
+
+	do {
+
+		delete hintResult;
+
+		int x1 = getRand(0, 9);
+		int y1 = getRand(0, 9);
+
+		int x2 = getRand(0, 9);
+		int y2 = getRand(0, 9);
+
+		// Swap (x1, y1) with (x2, y2)
+		// Make sure the properties switch
+		// Row, col, locked
+
+		hintResult = hint();
+
+		times--;
+
+	} while (times > 0 || !hintResult);
+
+	delete hintResult;
+
 }
 
 void BoardInterpreter::levelUp() {
 
+	if (level < 2) {
 
+		level++;
+
+		startGame();
+
+	}
 
 
 }
 
 void BoardInterpreter::levelDown() {
 
+	if (level > 1) {
+
+		level--;
+
+		startGame();
+
+	}
 
 
 }
@@ -288,7 +358,7 @@ void BoardInterpreter::levelDown() {
 
 void BoardInterpreter::restart() {
 
-
+	
 
 }
 
@@ -312,6 +382,7 @@ void BoardInterpreter::setFile(string file) {
 
 void BoardInterpreter::setStartLevel(int startLevel) {
 
+	this->level = startLevel;
 	this->startLevel = startLevel;
 
 }

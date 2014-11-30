@@ -44,6 +44,10 @@ void BoardL2::constructBoard() {
 
 		readFile();
 
+		// Only read once
+
+		file = "";
+
 		return;
 
 	}
@@ -97,7 +101,7 @@ Square *BoardL2::getSquare(int r, int c) {
 
 	lock = (getRand(1, 10) <= 2) ? true : false;
 
-	if (colourInput.length() > 0) {
+	if (file.length() > 0 && colourInput.length() > 0) {
 
 		colour = colourInput.at(colourInputIndex) - '0';
 

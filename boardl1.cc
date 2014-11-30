@@ -44,6 +44,10 @@ void BoardL1::constructBoard() {
 
 		readFile();
 
+		// Only read file once
+		
+		file = "";
+
 		cout << "File read" << endl;
 
 		return;
@@ -159,7 +163,7 @@ Square *BoardL1::getSquare(int r, int c) {
 
 	num = getRand(1, 12);
 
-	if (colourInput.length() > 0) {
+	if (file.length() > 0 && colourInput.length() > 0) {
 
 		colour = colourInput.at(colourInputIndex) - '0';
 
