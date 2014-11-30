@@ -11,6 +11,7 @@ BoardL0::BoardL0() {
 
 		board[i] = new Square* [boardSize];
 
+
 	}
 
 	cout << "[Board Initialized: Level 0]" << endl;	
@@ -44,7 +45,7 @@ BoardL0::~BoardL0() {
 
 void BoardL0::constructBoard() {
 
-	clearBoard();
+	//clearBoard();
 
 	//cout << "stratLevel: " << startLevel << "File: " << file << "length: " << file.length() << endl;
 

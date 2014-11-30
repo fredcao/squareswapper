@@ -36,7 +36,11 @@ BoardL1::~BoardL1() {
 
 void BoardL1::constructBoard() {
 
-	clearBoard();
+	cout << "Before clearBoard" << endl;
+
+//	clearBoard();
+
+	cout << "After clearBoard()" << endl;
 
 	if (startLevel == 1 && file.length() > 0) {
 

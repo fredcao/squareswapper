@@ -81,6 +81,7 @@ void Board::clearBoard() {
 
 		for (int j = 0; j < boardSize; j++) {
 	
+
 			delete board[i][j];
 
 		}
@@ -323,6 +324,8 @@ void Board::cleanup() {
 	cout << "Cleanup called" << endl;
 
 	delete instance;
+	instance = NULL;
+
 
 }
 

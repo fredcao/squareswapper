@@ -70,13 +70,9 @@ void BoardInterpreter::startGame() {
 
 	atexit(cleanup);	
 
-	cout << "Before constructBoard" << endl;
-
 	instance->constructBoard();
 	
-	cout << "After constructBoard" << endl;
-
-	//draw();
+	draw();
 
 }	
 
@@ -344,7 +340,7 @@ void BoardInterpreter::levelUp() {
 
 void BoardInterpreter::levelDown() {
 
-	if (level > 1) {
+	if (level > 0) {
 
 		level--;
 

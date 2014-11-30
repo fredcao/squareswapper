@@ -38,7 +38,7 @@ BoardL2::~BoardL2() {
 
 void BoardL2::constructBoard() {
 
-	clearBoard();
+//	clearBoard();
 
 	if (startLevel == 2 && file.length() > 0) {
 
