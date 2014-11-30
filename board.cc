@@ -191,6 +191,41 @@ int Board::getRand(int x, int y) {
 
 }
 
+Square *Board::makeSquare(int r, int c, int type, int colour, bool locked) {
+
+	Square *temp;
+
+	if (type == Square::BasicSquare) {
+
+		temp = new BasicSquare(r, c, colour, locked, xw);
+
+	}
+	else if (type == Square::LateralSquare) {
+
+		temp = new LateralSquare(r, c, colour, locked, xw);
+
+	}
+	else if (type == Square::UprightSquare) {
+
+		temp = new UprightSquare(r, c, colour, locked, xw);
+
+	}
+	else if (type == Square::UnstableSquare) {
+
+		temp = new UnstableSquare(r, c, colour, locked, xw);
+
+	}
+	else if (type == Square::PsychedelicSquare) {
+
+		temp = new PsychedelicSquare(r, c, colour, locked, xw);
+
+	}
+
+
+	return temp;
+
+}
+
 Square *Board::getSquare(int r, int c) {
 
 	return instance->getSquare(r, c);
@@ -523,7 +558,15 @@ void Board::dropFill() {
 
 				if (nextSq >= 0) {
 
-					board[i][j] = board[nextSq][j];
+					delete board[i][j];
+
+					int type = board[nextSq][j]->getType();
+					int colour = board[nextSq][j]->getColour();
+					bool locked = board[nextSq][j]->getLocked();
+
+					delete board[nextSq][j];
+
+					board[i][j] = makeSquare(i, j, type, colour, locked);
 					board[nextSq][j] = NULL;
 
 				}

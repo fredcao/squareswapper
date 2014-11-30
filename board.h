@@ -53,6 +53,8 @@ class Board {
 	void readFile();
 	
 	int getRand(int x, int y);
+
+	Square *makeSquare(int r, int c, int type, int colour, bool locked);
 	
 	virtual Square *getSquare(int r, int c);
 
