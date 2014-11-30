@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -MMD
-EXEC = squareswapper
+EXEC = ss5k
 OBJECTS = main.o board.o boardinterpreter.o boardl0.o boardl1.o boardl2.o square.o basicsquare.o lateralsquare.o uprightsquare.o unstablesquare.o psychedelicsquare.o textdisplay.o window.o
 DEPENDS = ${OBJECTS:.o=.d}
 

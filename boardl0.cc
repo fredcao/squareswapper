@@ -3,7 +3,7 @@
 
 using namespace std;
 
-BoardL0::BoardL0() {
+BoardL0::BoardL0() : scoreNeeded(200)  {
 
 	board = new Square** [boardSize];
 
@@ -134,5 +134,11 @@ Square *BoardL0::getSquare(int r, int c) {
 	}
 
 	return temp; 
+
+}
+
+int BoardL0::getScoreNeeded() {
+
+	return scoreNeeded;
 
 }

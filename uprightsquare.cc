@@ -13,7 +13,10 @@ UprightSquare::UprightSquare(int row, int col, int colour, bool locked, Xwindow 
 
 }
 
-UprightSquare::~UprightSquare(){}
+UprightSquare::~UprightSquare(){
+	colour = Black;
+	draw();
+}
 
 void UprightSquare::draw() {
 

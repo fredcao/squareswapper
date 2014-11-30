@@ -14,7 +14,10 @@ BasicSquare::BasicSquare(int row,int col,int colour, bool locked, Xwindow *xw) {
 
 }
 
-BasicSquare::~BasicSquare(){}
+BasicSquare::~BasicSquare(){
+	colour = Black;
+	draw();
+}
 
 void BasicSquare::draw() {
 

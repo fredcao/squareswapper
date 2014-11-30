@@ -13,7 +13,10 @@ UnstableSquare::UnstableSquare(int row,int col,int colour,bool locked, Xwindow *
 
 }
 
-UnstableSquare::~UnstableSquare(){}
+UnstableSquare::~UnstableSquare(){
+	colour = Black;
+	draw();
+}
 
 void UnstableSquare::draw() {
 

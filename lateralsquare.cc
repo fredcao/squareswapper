@@ -12,7 +12,10 @@ LateralSquare::LateralSquare(int row,int col,int colour,bool locked, Xwindow *xw
 	draw();
 }
 
-LateralSquare::~LateralSquare(){}
+LateralSquare::~LateralSquare(){
+	colour=Black;
+	draw();
+}
 
 void LateralSquare::draw() {
 
@@ -60,7 +63,7 @@ bool LateralSquare::notify(){
 
 		return false;
 
-	}
+}
 
 	// Else do stuff and notify textdisplay and Xwindow
 

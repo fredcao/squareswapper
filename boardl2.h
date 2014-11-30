@@ -8,6 +8,7 @@ class BoardL2 : public Board {
 
 	// Private stuff
 
+	int scoreNeeded;
 
 	public:
 
@@ -16,7 +17,7 @@ class BoardL2 : public Board {
 
 	void constructBoard();
 	Square *getSquare(int r, int c);
-
+	int getScoreNeeded();
 
 };
 

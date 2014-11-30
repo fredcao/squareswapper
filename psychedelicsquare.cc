@@ -13,7 +13,10 @@ PsychedelicSquare::PsychedelicSquare(int row,int col, int colour, bool locked, X
 
 }
 
-PsychedelicSquare::~PsychedelicSquare(){}
+PsychedelicSquare::~PsychedelicSquare(){
+	colour = Black;
+	draw();
+}
 
 void PsychedelicSquare::draw() {
 

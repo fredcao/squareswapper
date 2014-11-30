@@ -2,7 +2,7 @@
 
 using namespace std;
 
-BoardL1::BoardL1() : count5(1) {
+BoardL1::BoardL1() : scoreNeeded(300), count5(1) {
 
 	cout << "Ctor" << endl;
 
@@ -246,5 +246,11 @@ Square *BoardL1::getSquare(int r, int c) {
 	}
 
 	return temp;
+
+}
+
+int BoardL1::getScoreNeeded() {
+
+	return scoreNeeded;
 
 }

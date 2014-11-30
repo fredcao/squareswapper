@@ -44,7 +44,8 @@ void BoardInterpreter::startGame() {
 
 	delete instance;
 
-	cout << "Starting game at level ... " << level << endl;
+//	cout << "Starting game at level ... " << level << endl;
+
 
 	if (level == 0) {
 
@@ -70,60 +71,106 @@ void BoardInterpreter::startGame() {
 
 	atexit(cleanup);	
 
+	draw();
+
 	instance->constructBoard();
 	
 	draw();
+
+	swap(0, 0, -1);
 
 }	
 
 
 void BoardInterpreter::swap(int x, int y, int z) {
-
-	Square *temp = board[x][y];
-
+	int colour1;
+	int type1;
+	bool locked1;
+	bool locked2;	
 	// Transfer properties
 
-	if (z == 0) {
+	if (z == 0) {	//north
+		colour1 = board[x][y]->getColour();
+		type1 = board[x][y]->getType();
+		locked1 = board[x][y]->getLocked();
+		locked2 = board[x-1][y]->getLocked();
+		delete board[x][y];
 
-		board[x][y] = board[x-1][y];
-		board[x-1][y] = temp;
+
+		board[x][y] = makeSquare(x,y,board[x-1][y]->getType(),board[x-1][y]->getColour(),locked1);
+
+		delete board[x-1][y];
+
+		board[x-1][y] = makeSquare(x-1, y, type1, colour1, locked2);
+
+
+		/*
+		newTemp2 = makeSquare(x-1,y,board[x][y]->getType(),board[x][y]->getColour(),board[x-1][y]->getLocked());
+		delete board[x][y];	
+		board[x][y] = newTemp1;
+		delete board[x-1][y];
+		board[x-1][y] = newTemp2;
+
+			*/
 
 	}
-	else if (z == 1) {
+	else if (z == 1) {	//south
+		return swap(x+1, y, 0);
+	
+	}
+	else if (z == 2) {	//west
+		colour1=board[x][y]->getColour();
+		type1 = board[x][y]->getType();
+		locked1 = board[x][y]->getLocked();
+		locked2 = board[x][y-1]->getLocked();
 
-		board[x][y] = board[x+1][y];
-		board[x+1][y] = temp;
+		delete board[x][y];
+		board[x][y] = makeSquare(x,y,board[x][y-1]->getType(),board[x][y-1]->getColour(),locked1);
+
+		delete board[x][y-1];
+		board[x][y-1] = makeSquare(x,y-1,type1,colour1, locked2);
+		
+		/*
+		newTemp1 = makeSquare(x,y,board[x][y-1]->getType(),board[x][y-1]->getColour(),board[x][y]->getLocked());
+		newTemp2 = makeSquare(x,y-1,board[x][y]->getType(),board[x][y]->getColour(),board[x][y-1]->getLocked());
+		delete board[x][y];
+		board[x][y] = newTemp1;
+		delete board[x][y-1];
+		board[x][y-1] = newTemp2;*/
 
 	}
-	else if (z == 2) {
-
-		board[x][y] = board[x][y-1];
-		board[x][y-1] = temp;
+	else if (z == 3) {	//east
+		return swap(x,y+1,2);
+		/*
+		newTemp1 = makeSquare(x,y,board[x][y+1]->getType(),board[x][y+1]->getColour(),board[x][y]->getLocked());
+		newTemp2 = makeSquare(x,y+1,board[x][y]->getType(),board[x][y]->getColour(),board[x][y+1]->getLocked());
+		delete board[x][y];
+		board[x][y] = newTemp1;
+		delete board[x][y+1];
+		board[x][y+1] = newTemp2;*/
 
 	}
-	else if (z == 3) {
 
-		board[x][y] = board[x][y+1];
-		board[x][y+1] = temp;
-
-	}
-
-	int points;
+	int points = 0;
 	int newSquares = -1;
 	int newPoints;
-	int n = 1;
+	int n = 0;
 			
 	while (newSquares != 0) {
 
 		newSquares = 0;	
 		newPoints = 0;
 
-		//newSquares += matchL();
-		//newSquares += match5();
-		//newSquares += match4();
-		//newSquares += match3();
+		newSquares += matchL();
+		newSquares += match5();
+		newSquares += match4();
+		newSquares += match3();
+		
+		if (newSquares == 3) {
+			newPoints += 3;
+		}
 
-		if (newSquares == 4) {
+		else if (newSquares == 4) {
 		
 			newPoints += 2 * 4;
 	
@@ -141,15 +188,16 @@ void BoardInterpreter::swap(int x, int y, int z) {
 			
 		points += newPoints * static_cast<int>(pow(2, n));
 
-		n++;
+		
 
 		cout << "Points earned in chain reaction (" << n << "): " << newPoints * pow(2, n) << endl;
-
+		n++;
 		dropFill();
 
 	}
 
 	score += points;
+	levelScore += points;
 
 	if (score > highscore) {
 
@@ -157,8 +205,13 @@ void BoardInterpreter::swap(int x, int y, int z) {
 
 	}
 
-	draw();
+	if (levelScore >= getScoreNeeded()) { 
 
+		levelUp();
+	}
+	
+	draw();
+	
 
 	// 0 N
 	// 2 W
@@ -287,7 +340,8 @@ int *BoardInterpreter::hint() {
 }
 
 void BoardInterpreter::scramble() {
-
+	Square* newTemp1;
+	Square* newTemp2;
 
 	int *hintResult = hint();
 
@@ -317,6 +371,13 @@ void BoardInterpreter::scramble() {
 		// Make sure the properties switch
 		// Row, col, locked
 
+		newTemp1 = makeSquare(x1,y1,board[x2][y2]->getType(),board[x2][y2]->getColour(),board[x1][y1]->getLocked());
+		newTemp2 = makeSquare(x2,y2,board[x1][y1]->getType(),board[x1][y1]->getColour(),board[x2][y2]->getLocked());
+		delete board[x1][y1];
+		board[x1][y1] = newTemp1;
+		delete board[x2][y2];
+		board[x2][y2] = newTemp2;
+
 		hintResult = hint();
 
 		times--;
@@ -333,6 +394,8 @@ void BoardInterpreter::levelUp() {
 
 		level++;
 
+		levelScore = 0;
+
 		startGame();
 
 		printBoard();
@@ -347,6 +410,8 @@ void BoardInterpreter::levelDown() {
 	if (level > 0) {
 
 		level--;
+
+		levelScore = 0;
 
 		startGame();
 
@@ -364,6 +429,9 @@ void BoardInterpreter::restart() {
 	clearBoard();
 
 	instance->constructBoard();
+
+	score = 0;
+	levelScore = 0;
 
 	printBoard();
 	

@@ -11,6 +11,7 @@ int Board::boardSize = 10;
 int Board::level = 0;
 int Board::movesLeft = -1;
 int Board::score = 0;
+int Board::levelScore = 0;
 int Board::highscore = 0;
 bool Board::textOnlyFlag = false;
 int Board::seed = -1;
@@ -289,6 +290,13 @@ int Board::getScore() {
 
 }
 
+int Board::getScoreNeeded() {
+	cout << "getScoreNeeded call in Board" << endl;
+	cout << "Board getScoreNeeded: " << instance->getScoreNeeded();
+	return instance->getScoreNeeded();
+
+}
+
 int Board::getHighScore() {
 
 	return highscore;
@@ -383,9 +391,14 @@ int Board::clearRow(int row) {
 	for (int j = 0; j < boardSize; j++) {
 	
 		if (board[row][j]) {
-
-			if(!board[row][j]->notify()){
-				board[row][j]=NULL;
+			if(board[row][j]->getType()!=Square::LateralSquare){
+				sqCount+=doEffect(board[row][j],3);
+			}
+			else{
+				sqCount++;
+				if(!board[row][j]->notify()){
+					board[row][j]=NULL;
+				}
 			}
 
 		}
@@ -407,9 +420,14 @@ int Board::clearCol(int col) {
 	for(int i = 0; i < boardSize; i++) {
 
 		if(board[i][col]) {
-
-			if(!board[i][col]->notify()){
-				board[i][col]=NULL;
+			if(board[i][col]->getType()!=Square::UprightSquare){
+				sqCount+=doEffect(board[i][col],3);
+			}
+			else{
+				sqCount++;
+				if(!board[i][col]->notify()){
+					board[i][col]=NULL;
+				}
 			}
 
 		}
@@ -442,8 +460,14 @@ int Board::explode(int centerX, int centerY, int width) {
 	for(int i = max(0,centerX-r); i < min(boardSize, centerX+r+1);i++){
 		for(int j = max(0,centerY-r); j < min(boardSize, centerY+r+1);j++){
 			if(board[i][j]){
-				if(!board[i][j]->notify()){
-					board[i][j]=NULL;
+				if(i==centerX && j==centerY){
+					sqCount++;
+					if(!board[i][j]->notify()){
+						board[i][j]=NULL;
+					}
+				}
+				else{
+					sqCount+=doEffect(board[i][j],3);
 				}
 			}
 		}
@@ -462,9 +486,16 @@ int Board::clearColour(int colour) {
 	for(int i = 0; i < boardSize; i++){
 		for(int j = 0; j < boardSize;j++){
 			if(board[i][j] && board[i][j]->getColour()==colour){
-				if(!board[i][j]->notify()){
-					board[i][j]=NULL;
+				if(board[i][j]->getType()!=Square::PsychedelicSquare){
+					sqCount+=doEffect(board[i][j],3);
 				}
+				else{
+					sqCount++;
+					if(!board[i][j]->notify()){
+						board[i][j]=NULL;
+					}
+				}
+				
 			}
 		}
 	}
@@ -547,7 +578,7 @@ int Board::dropSquare(int currentRow, int col) {
 }
 
 void Board::dropFill() {
-
+	//bool prevLocked = false;
 	for (int j = 0; j < boardSize; j++) {
 
 		for (int i = boardSize - 1; i >= 0; i--) {
@@ -562,11 +593,11 @@ void Board::dropFill() {
 
 					int type = board[nextSq][j]->getType();
 					int colour = board[nextSq][j]->getColour();
-					bool locked = board[nextSq][j]->getLocked();
-
+					int locked = board[nextSq][j]->getLocked();
 					delete board[nextSq][j];
-
+					
 					board[i][j] = makeSquare(i, j, type, colour, locked);
+					//prevLocked = board[nextSq][j]->getLocked();
 					board[nextSq][j] = NULL;
 
 				}
@@ -589,6 +620,27 @@ void Board::dropFill() {
 
 }
 
+int Board::countLocked() {
+
+	int count = 0;
+
+	for (int i = 0; i < boardSize; i++) {
+
+		for (int j = 0; j < boardSize; j++) {
+
+			if (board[i][j] && board[i][j]->getLocked()) {
+	
+				count++;
+
+			}
+
+		}
+
+	}
+
+	return count;
+
+}
 
 void Board::draw() {
 

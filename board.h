@@ -23,7 +23,9 @@ class Board {
 	static int level;
 	static int movesLeft;
 	static int score;
+	static int levelScore;
 	static int highscore;
+
 
 	// Options set by user
 	static bool textOnlyFlag;
@@ -63,6 +65,8 @@ class Board {
 	int dropSquare(int currentRow, int col);
 	void dropFill();
 
+	int countLocked();
+
 	void clearBoard();
 
 	void draw();
@@ -76,6 +80,7 @@ class Board {
 	int getLevel();
 	int getMovesLeft();
 	int getScore();
+	virtual int getScoreNeeded();
 	int getHighScore();
 	void setDisplay(TextDisplay *td);
 	void setWindow(Xwindow *xw);
