@@ -56,7 +56,7 @@ void BoardL2::constructBoard() {
 
 			colour = getRand(0, 3);
 
-			board[i][j] = new BasicSquare(i, j, colour, false);
+			board[i][j] = new BasicSquare(i, j, colour, false, xw);
 
 		}
 
@@ -75,7 +75,9 @@ void BoardL2::constructBoard() {
 
 			delete board[x][y];
 			
-			board[x][y] = new BasicSquare(x, y, colour, true);
+			board[x][y] = new BasicSquare(x, y, colour, true, xw);
+
+			board[x][y]->setWindow(xw);
 
 			lockedCount++;
 
@@ -114,7 +116,7 @@ Square *BoardL2::getSquare(int r, int c) {
 
 	}
 
-	temp = new BasicSquare(r, c, colour, lock);
+	temp = new BasicSquare(r, c, colour, lock, xw);
 
 	return temp;
 	

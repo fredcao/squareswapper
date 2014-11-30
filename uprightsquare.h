@@ -5,7 +5,7 @@
 class UprightSquare: public Square{
 	void draw();	
 	public:
-	UprightSquare(int row, int col,int colour, bool locked);
+	UprightSquare(int row, int col,int colour, bool locked, Xwindow *xw);
 	~UprightSquare();
 	void print();
 	bool notify();

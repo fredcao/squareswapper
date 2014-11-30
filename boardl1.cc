@@ -62,24 +62,26 @@ void BoardL1::constructBoard() {
 
 			if (num <= 4) {
 
-				board[i][j] = new BasicSquare(i, j, Square::White, false);
+				board[i][j] = new BasicSquare(i, j, Square::White, false, xw);
 
 			}
 			else if (num <= 8) {
 
-				board[i][j] = new BasicSquare(i, j, Square::Red, false);
+				board[i][j] = new BasicSquare(i, j, Square::Red, false, xw);
 
 			}
 			else if (num <= 10) {
 
-				board[i][j] = new BasicSquare(i, j, Square::Green, false);
+				board[i][j] = new BasicSquare(i, j, Square::Green, false, xw);
 
 			}
 			else {
 
-				board[i][j] = new BasicSquare(i, j, Square::Blue, false);
+				board[i][j] = new BasicSquare(i, j, Square::Blue, false, xw);
 
 			}
+
+			board[i][j]->setWindow(xw);
 
 		}
 
@@ -109,21 +111,21 @@ void BoardL1::constructBoard() {
 
 				case 1:
 
-					board[x][y] = new LateralSquare(x, y, colour, false);
+					board[x][y] = new LateralSquare(x, y, colour, false, xw);
 					break;
 
 				case 2:
 
-					board[x][y] = new UprightSquare(x, y, colour, false);
+					board[x][y] = new UprightSquare(x, y, colour, false, xw);
 					break;
 				case 3:
 
-					board[x][y] = new UnstableSquare(x, y, colour, false);
+					board[x][y] = new UnstableSquare(x, y, colour, false, xw);
 					break;
 
 				case 4:
 
-					board[x][y] = new PsychedelicSquare(x, y, colour, false);
+					board[x][y] = new PsychedelicSquare(x, y, colour, false, xw);
 					break;
 
 				default:
@@ -200,22 +202,22 @@ Square *BoardL1::getSquare(int r, int c) {
 
 			case 1:
 
-				temp = new LateralSquare(r, c, colour, false);
+				temp = new LateralSquare(r, c, colour, false, xw);
 				break;
 
 			case 2:
 
-				temp = new UprightSquare(r, c, colour, false);
+				temp = new UprightSquare(r, c, colour, false, xw);
 				break;
 
 			case 3:
 
-				temp = new UnstableSquare(r, c, colour, false);
+				temp = new UnstableSquare(r, c, colour, false, xw);
 				break;
 
 			case 4:
 
-				temp = new PsychedelicSquare(r, c, colour, false);
+				temp = new PsychedelicSquare(r, c, colour, false, xw);
 				break;
 
 			default:
@@ -229,7 +231,7 @@ Square *BoardL1::getSquare(int r, int c) {
 	}
 	else {
 
-		temp = new BasicSquare(r, c, colour, false);
+		temp = new BasicSquare(r, c, colour, false, xw);
 
 		count5++;
 				

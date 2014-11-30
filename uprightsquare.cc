@@ -1,7 +1,7 @@
 #include "uprightsquare.h"
 using namespace std;
 
-UprightSquare::UprightSquare(int row,int col,int colour=White,bool locked=false) {
+UprightSquare::UprightSquare(int row, int col, int colour, bool locked, Xwindow *xw) {
 
 	this->row = row;
 	this->col = col;
@@ -13,7 +13,12 @@ UprightSquare::UprightSquare(int row,int col,int colour=White,bool locked=false)
 
 UprightSquare::~UprightSquare(){}
 
-void UprightSquare::draw() { }
+void UprightSquare::draw() {
+
+	xw->drawRectangle(row, col, len, len, colour, locked, type);
+
+
+}
 void UprightSquare::print() {
 
 	if (locked) {
@@ -36,10 +41,17 @@ bool UprightSquare::notify() {
 	if (locked) {
 
 		locked = false;
+
+		draw();
+
 		return true;
 
 	}
 	else {
+
+		colour = Black;
+
+		draw();		
 
 		delete this;
 

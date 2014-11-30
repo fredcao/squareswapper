@@ -1,7 +1,7 @@
 #include "psychedelicsquare.h"
 using namespace std;
 
-PsychedelicSquare::PsychedelicSquare(int row,int col,int colour=White,bool locked=false) {
+PsychedelicSquare::PsychedelicSquare(int row,int col, int colour, bool locked, Xwindow *xw) {
 
 	this->row = row;
 	this->col = col;
@@ -13,7 +13,12 @@ PsychedelicSquare::PsychedelicSquare(int row,int col,int colour=White,bool locke
 
 PsychedelicSquare::~PsychedelicSquare(){}
 
-void PsychedelicSquare::draw() { }
+void PsychedelicSquare::draw() {
+
+	xw->drawRectangle(row, col, len, len, colour, locked, type);
+
+
+}
 void PsychedelicSquare::print() {
 
 	if (locked) {
@@ -36,10 +41,14 @@ bool PsychedelicSquare::notify() {
 	if (locked) {
 
 		locked = false;
+		draw();
 		return true;
 
 	}
 	else {
+
+		colour = Black;
+		draw();
 
 		delete this;
 	

@@ -31,10 +31,10 @@ Xwindow::Xwindow(int width, int height) {
   // Set up colours.
   XColor xcolour;
   Colormap cmap;
-  char color_vals[7][10]={"white", "black", "red", "green", "blue"};
+  char color_vals[7][10]={"white", "red", "green", "blue", "black", "tan"};
 
   cmap=DefaultColormap(d,DefaultScreen(d));
-  for(int i=0; i < 5; ++i) {
+  for(int i=0; i < 6; ++i) {
       XParseColor(d,cmap,color_vals[i],&xcolour);
       XAllocColor(d,cmap,&xcolour);
       colours[i]=xcolour.pixel;
@@ -59,10 +59,82 @@ Xwindow::~Xwindow() {
   XCloseDisplay(d);
 }
 
-void Xwindow::fillRectangle(int x, int y, int width, int height, int colour) {
+void Xwindow::drawRectangle(int x, int y, int width, int height, int colour, bool locked, int type) {
+
+  cout << "x: " << x << " y: " << y << " width: " << width << " height: " << height << " colour: " << colour << "locked: " << locked << " type: " << type << endl;
+
   XSetForeground(d, gc, colours[colour]);
   XFillRectangle(d, w, gc, x, y, width, height);
   XSetForeground(d, gc, colours[Black]);
+
+	return;
+
+  if (type == 1) {
+
+	height /= 3;
+
+	XDrawLine(d, w, gc, x, y + height - 10, x + width, y + height + 10);
+
+	height *= 2;
+
+	XDrawLine(d, w, gc, x, y + height - 10, x + width, y + height + 10);
+
+  }
+  else if (type == 2) {
+
+	width /= 3;
+
+	XDrawLine(d, w, gc, x + width - 10, y, x + width + 10, y + height);
+	
+	width *= 2;
+
+	XDrawLine(d, w, gc, x + width - 10, y, x + width + 10, y + height);
+
+  }
+  else if (type == 3) {
+
+	height /= 2;
+	width /= 2;
+
+	XFillRectangle(d, w, gc, x + (width / 2), y + (height / 2), width, height);
+
+  }
+  else if (type == 4) {
+
+	int len = 6;
+
+	height /= 4;
+	width /= 4;
+	
+	XFillRectangle(d, w, gc, x + width - 3, y + height - 3, len, len);
+
+	height *= 2;
+
+	XFillRectangle(d, w, gc, x + width - 3, y + height - 3, len, len);
+
+	height += height / 2;
+
+	XFillRectangle(d, w, gc, x + width - 3, y + height - 3, len, len);
+
+	height += height / 3;
+	
+	XFillRectangle(d, w, gc, x + width - 3, y + height - 3, len, len);
+
+  }
+
+
+  if (locked) {
+
+	XDrawLine(d, w, gc, x, y, x + width, y + 5);
+	XDrawLine(d, w, gc, x, y + height - 5, x + width, y + height);
+	XDrawLine(d, w, gc, x, y, x + 5, y + height);
+	XDrawLine(d, w, gc, x + width - 5, y, x + width, y + height);
+
+	XDrawLine(d, w, gc, x, y, x + width, y + height);
+	XDrawLine(d, w, gc, x, y + height, x + width, y);
+
+ }
+
 }
 
 void Xwindow::drawString(int x, int y, string msg) {

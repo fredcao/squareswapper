@@ -15,6 +15,7 @@ BoardL0::BoardL0() {
 
 	cout << "[Board Initialized: Level 0]" << endl;	
 
+	cout << "Xwindow: " << xw << endl;
 
 }
 
@@ -64,39 +65,39 @@ void BoardL0::constructBoard() {
 
 		for (int j = 0; j < boardSize; j++) {
 
-		fs >> input;
+			fs >> input;
 
-		bool locked = (input.at(0) == 'l') ? true : false;
-		char type = input.at(1);
-		int colour = input.at(2) - '0';
+			bool locked = (input.at(0) == 'l') ? true : false;
+			char type = input.at(1);
+			int colour = input.at(2) - '0';
 
-		// cout << locked << type << colour << "     ";
+			// cout << locked << type << colour << "     ";
 
 
-		if(type == '_'){
-		//	cout << "BS ";
-			board[i][j] = new BasicSquare(i,j,colour,locked);
-		}
-		else if(type == 'h'){
-
-		//	cout << "LS";
-			board[i][j] = new LateralSquare(i,j,colour,locked);
-		}
-		else if(type == 'v'){
-		//	cout << "US";
-			board[i][j] = new UprightSquare(i,j,colour,locked);
-		}
-		else if(type == 'b'){
-
-		//	cout << "SS";
-			board[i][j] = new UnstableSquare(i,j,colour,locked);
-		}
-		else if(type == 'p'){
-
-		//	cout << "PS";
-			board[i][j] = new PsychedelicSquare(i,j,colour,locked);
-		}
-
+			if(type == '_'){
+			//	cout << "BS ";
+				board[i][j] = new BasicSquare(i,j,colour,locked, xw);
+			}
+			else if(type == 'h'){
+	
+			//	cout << "LS";
+				board[i][j] = new LateralSquare(i,j,colour,locked, xw);
+			}
+			else if(type == 'v'){
+			//	cout << "US";
+				board[i][j] = new UprightSquare(i,j,colour,locked, xw);
+			}
+			else if(type == 'b'){
+	
+			//	cout << "SS";
+				board[i][j] = new UnstableSquare(i,j,colour,locked, xw);
+			}
+			else if(type == 'p'){
+	
+			//	cout << "PS";
+				board[i][j] = new PsychedelicSquare(i,j,colour,locked, xw);
+			}
+			
 
 		//Ignore this for now
 		//board[i][j]->notifyTD();
@@ -121,7 +122,7 @@ Square *BoardL0::getSquare(int r, int c) {
 
 	Square *temp;
 
-	temp = new BasicSquare(r, c, colour, false);
+	temp = new BasicSquare(r, c, colour, false, xw);
 
 	colourInputIndex++;
 

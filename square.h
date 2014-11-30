@@ -13,10 +13,12 @@ class Square{
 	TextDisplay *td;
 	Xwindow *xw;
 
+	int len;
+
 	virtual void draw() = 0;
 	public:
 	enum { BasicSquare = 0, LateralSquare, UprightSquare, UnstableSquare, PsychedelicSquare };
-	enum { White = 0, Red, Green, Blue };
+	enum { White = 0, Red, Green, Blue, Black, Tan };
 	Square();
 	virtual ~Square();
 	int getRow();

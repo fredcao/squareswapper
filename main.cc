@@ -52,7 +52,17 @@ int main(int argc, char* argv[]) {
 
 	}
 
-	//cout << "Call start game" << endl;
+	//cout << "Call start game" << endl;	
+
+	if (!bi->textOnly()) {
+
+		Xwindow *xw = new Xwindow(600, 600);
+
+		cout << "[Main] Xwindow: " << xw << endl;
+
+		bi->setWindow(xw);
+
+	}
 
 	bi->startGame();
 

@@ -1,7 +1,7 @@
 #include "square.h"
 using namespace std;
 
-Square::Square(){}
+Square::Square() : len(60) {}
 Square::~Square(){}
 int Square::getRow(){
 	return row;

@@ -14,13 +14,13 @@ class Xwindow {
 
 	public:
 
-	Xwindow(int width = 500, int height = 500);	// Constructor; displays the window
+	Xwindow(int width = 800, int height = 800);	// Constructor; displays the window
 	~Xwindow();					// Destructor: destroys the window
 
-	enum { Black = -1, White = 0, Red, Green, Blue };
+	enum { White = 0, Red, Green, Blue, Black, Tan };
 
 	// Draws a rectangle
-	void fillRectangle(int x, int y, int width, int height, int colour=White);
+	void drawRectangle(int x, int y, int width, int height, int colour, bool locked, int type);
 
 	// Draws a string
 	void drawString(int x, int y, std::string msg);

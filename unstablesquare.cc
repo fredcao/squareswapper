@@ -1,7 +1,7 @@
 #include "unstablesquare.h"
 using namespace std;
 
-UnstableSquare::UnstableSquare(int row,int col,int colour=White,bool locked=false) {
+UnstableSquare::UnstableSquare(int row,int col,int colour,bool locked, Xwindow *xw) {
 
 	this->row = row;
 	this->col = col;
@@ -13,7 +13,12 @@ UnstableSquare::UnstableSquare(int row,int col,int colour=White,bool locked=fals
 
 UnstableSquare::~UnstableSquare(){}
 
-void UnstableSquare::draw() { }
+void UnstableSquare::draw() {
+
+
+	xw->drawRectangle(row, col, len, len, colour, locked, type);
+
+}
 void UnstableSquare::print() {
 
 	if (locked) {
@@ -36,10 +41,15 @@ bool UnstableSquare::notify() {
 	if (locked) {
 
 		locked = false;
+		draw();
 		return true;
 
 	}
 	else {
+
+		colour = Black;
+		draw();
+
 		delete this;
 		return false;
 	

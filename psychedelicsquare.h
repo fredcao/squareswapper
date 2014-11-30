@@ -5,7 +5,7 @@
 class PsychedelicSquare: public Square{
 	void draw();	
 	public:
-	PsychedelicSquare(int row, int col, int colour,bool locked);
+	PsychedelicSquare(int row, int col, int colour, bool locked, Xwindow *xw);
 	~PsychedelicSquare();
 	void print();
 	bool notify();

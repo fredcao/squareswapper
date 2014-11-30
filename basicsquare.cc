@@ -2,19 +2,27 @@
 
 using namespace std;
 
-BasicSquare::BasicSquare(int row,int col,int colour=White,bool locked=false) {
+BasicSquare::BasicSquare(int row,int col,int colour, bool locked, Xwindow *xw) {
 	
 	this->row = row;
 	this->col = col;
 	this->colour = colour;
 	this->type = 0;
 	this->locked = locked;
+	this->xw = xw;
+	draw();
 
 }
 
 BasicSquare::~BasicSquare(){}
 
-void BasicSquare::draw() { }
+void BasicSquare::draw() {
+
+	cout << "[BSquare] Xw: " << xw << endl;
+
+	xw->drawRectangle(row, col, len, len, colour, locked, type);
+
+}
 void BasicSquare::print() {
 
 	if (locked) {
@@ -39,10 +47,17 @@ bool BasicSquare::notify() {
 
 		locked = false;
 
+		draw();
+
 		return true;
 
 	}
 	else {
+
+
+		colour = Black;
+
+		draw();
 
 		delete this;
 		return false;

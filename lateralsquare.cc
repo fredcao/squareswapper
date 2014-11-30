@@ -1,7 +1,7 @@
 #include "lateralsquare.h"
 using namespace std;
 
-LateralSquare::LateralSquare(int row,int col,int colour=White,bool locked=false) {
+LateralSquare::LateralSquare(int row,int col,int colour,bool locked, Xwindow *xw) {
 
 	this->row = row;
 	this->col = col;
@@ -12,7 +12,12 @@ LateralSquare::LateralSquare(int row,int col,int colour=White,bool locked=false)
 
 LateralSquare::~LateralSquare(){}
 
-void LateralSquare::draw() { }
+void LateralSquare::draw() {
+
+	xw->drawRectangle(row, col, len, len, colour, locked, type);
+
+
+}
 void LateralSquare::print() {
 
 	if (locked) {
@@ -36,10 +41,16 @@ bool LateralSquare::notify(){
 
 		locked = false;
 
+		draw();	
+
 		return true;
 
 	}
 	else {
+
+		colour = Black;
+		
+		draw();
 
 		delete this;
 
