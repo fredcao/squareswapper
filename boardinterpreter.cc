@@ -25,13 +25,10 @@ BoardInterpreter::~BoardInterpreter() {
 
 void BoardInterpreter::remove(int r, int c) {
 
-	cout << "Remove called" << endl;
-
 	if (!board[r][c]->notify()) {
 		board[r][c] = NULL;
 	}
 
-	//delete board[r][c];
 }
 
 void BoardInterpreter::dropFillTemp() {
@@ -44,12 +41,9 @@ void BoardInterpreter::startGame() {
 
 	delete instance;
 
-//	cout << "Starting game at level ... " << level << endl;
-
 
 	if (level == 0) {
 
-		cout << "Create new BoardL0" << endl;
 		instance = new BoardL0();
 
 	}
@@ -76,13 +70,14 @@ void BoardInterpreter::startGame() {
 	instance->constructBoard();
 	
 	draw();
-
+	
 	swap(0, 0, -1);
-
+	
 }	
 
 
 void BoardInterpreter::swap(int x, int y, int z) {
+
 	int colour1;
 	int type1;
 	bool locked1;
@@ -188,9 +183,6 @@ void BoardInterpreter::swap(int x, int y, int z) {
 			
 		points += newPoints * static_cast<int>(pow(2, n));
 
-		
-
-		cout << "Points earned in chain reaction (" << n << "): " << newPoints * pow(2, n) << endl;
 		n++;
 		dropFill();
 
@@ -206,6 +198,14 @@ void BoardInterpreter::swap(int x, int y, int z) {
 	}
 
 	if (levelScore >= getScoreNeeded()) { 
+
+		if (level == 2 && countLocked() == 0) {
+
+			level++;
+
+			draw();
+
+		}
 
 		levelUp();
 	}

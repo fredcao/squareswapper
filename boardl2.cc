@@ -12,17 +12,10 @@ BoardL2::BoardL2() : scoreNeeded(500) {
 
 	}
 
-	cout << "[Board Initialized: Level 2]" << endl;
-
-	// Empty
-	
-
 
 }
 
 BoardL2::~BoardL2() {
-
-	cout << "BoardL2 destructor called" << endl;
 
 	clearBoard();
 
@@ -45,8 +38,6 @@ void BoardL2::constructBoard() {
 		readFile();
 
 		// Only read once
-
-		file = "";
 
 		return;
 
@@ -95,13 +86,9 @@ Square *BoardL2::getSquare(int r, int c) {
 
 	Square *temp;
 
-	bool lock;
-
 	int colour;
 
-	lock = (getRand(1, 10) <= 2) ? true : false;
-
-	if (file.length() > 0 && colourInput.length() > 0) {
+	if (file.length() > 0 && colourInput.length() > 0 && startLevel == 2) {
 
 		colour = colourInput.at(colourInputIndex) - '0';
 
@@ -120,7 +107,7 @@ Square *BoardL2::getSquare(int r, int c) {
 
 	}
 
-	temp = new BasicSquare(r, c, colour, lock, xw);
+	temp = new BasicSquare(r, c, colour, false, xw);
 
 	return temp;
 	

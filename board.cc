@@ -50,7 +50,6 @@ Board::Board() : td(NULL) {
 
 Board::~Board() {
 
-	cout << "Board destructor called" << endl;
 /*
 	clearBoard();
 
@@ -140,15 +139,8 @@ void Board::readFile() {
 			board[i][j] = new PsychedelicSquare(i,j,colour,locked, xw);
 		}
 
-
-		//Ignore this for now
-		//board[i][j]->notifyTD();
-		//board[i][j]->draw();
-				
-		
-		
-
 		}
+
 
 	}
 
@@ -160,7 +152,6 @@ void Board::readFile() {
 
 	}
 
-//	cout << "Finished read file, print: " << endl;
 //	printBoard();
 }
 
@@ -235,39 +226,6 @@ Square *Board::getSquare(int r, int c) {
 
 Board *Board::getInstance() {
 
-	// If an instance doesn't exist yet, create one and call cleanup at exit	
-
-	if (!instance) {
-
-//		instance = new Board();
-/*
-		if (level == 0) {
-
-			instance = new BoardL0();
-
-		}
-		else if (level == 1) {
-		
-			instance = new BoardL1();
-		
-		}
-		else if (level == 2) {
-
-			instance = new BoardL2();
-
-		}
-		else {
-
-			instance = new Board();
-
-		}*/
-
-//		atexit(cleanup);
-
-	}
-
-	// End if
-
 	return instance;	// Returns instance, a pointer to the instance of the ScoreBoard
 
 }
@@ -291,8 +249,6 @@ int Board::getScore() {
 }
 
 int Board::getScoreNeeded() {
-	cout << "getScoreNeeded call in Board" << endl;
-	cout << "Board getScoreNeeded: " << instance->getScoreNeeded();
 	return instance->getScoreNeeded();
 
 }
@@ -316,7 +272,6 @@ void Board::setWindow(Xwindow *xw) {
 
 void Board::printBoard() {
 	
-	cout << "Board print: " << endl;
 
 	for (int i = 0; i < boardSize; i++) {
 
@@ -357,14 +312,10 @@ void Board::printBoard() {
 		cout << endl;
 
 	}
-	cout << "TD print: " << endl;
-//	cout << td;
 
 }
 
 void Board::cleanup() {
-
-	cout << "Cleanup called" << endl;
 
 	delete instance;
 	instance = NULL;

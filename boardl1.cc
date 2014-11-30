@@ -2,9 +2,7 @@
 
 using namespace std;
 
-BoardL1::BoardL1() : scoreNeeded(300), count5(1) {
-
-	cout << "Ctor" << endl;
+BoardL1::BoardL1() : scoreNeeded(300) {
 
 	board = new Square** [boardSize];
 
@@ -14,13 +12,9 @@ BoardL1::BoardL1() : scoreNeeded(300), count5(1) {
 
 	}
 
-	cout << "[Board Initialized: Level 1]" << endl;
-
 }
 
 BoardL1::~BoardL1() {
-
-	cout << "BoardL1 destructor called" << endl;
 
 	clearBoard();
 
@@ -36,29 +30,13 @@ BoardL1::~BoardL1() {
 
 void BoardL1::constructBoard() {
 
-	cout << "Before clearBoard" << endl;
-
-//	clearBoard();
-
-	cout << "After clearBoard()" << endl;
-
 	if (startLevel == 1 && file.length() > 0) {
 
-		cout << "Read file" << endl;
-
 		readFile();
-
-		// Only read file once
-		
-		file = "";
-
-		cout << "File read" << endl;
 
 		return;
 
 	}
-
-	cout << "Before generation" << endl;
 
 	int num;
 
@@ -94,8 +72,6 @@ void BoardL1::constructBoard() {
 		}
 
 	}
-
-	cout << "After generation" << endl;
 
 	// Pick 20 squares to make special
 
@@ -150,14 +126,10 @@ void BoardL1::constructBoard() {
 
 	}
 
-	cout << "After making special squares." << endl;
-
-	// Temporary implementation
 
 }
 
 Square *BoardL1::getSquare(int r, int c) {
-
 
 
 	Square *temp;
@@ -167,7 +139,7 @@ Square *BoardL1::getSquare(int r, int c) {
 
 	num = getRand(1, 12);
 
-	if (file.length() > 0 && colourInput.length() > 0) {
+	if (file.length() > 0 && colourInput.length() > 0 && startLevel == 1) {
 
 		colour = colourInput.at(colourInputIndex) - '0';
 
@@ -201,8 +173,10 @@ Square *BoardL1::getSquare(int r, int c) {
 
 	}
 
+	num = getRand(1, 5);
 
-	if (count5 == 5) {
+
+	if (num == 1) {
 
 		num = getRand(1, 4);
 
@@ -234,15 +208,12 @@ Square *BoardL1::getSquare(int r, int c) {
 
 		}
 
-		count5 = 1;
 
 	}
 	else {
 
 		temp = new BasicSquare(r, c, colour, false, xw);
 
-		count5++;
-				
 	}
 
 	return temp;

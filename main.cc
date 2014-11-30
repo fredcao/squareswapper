@@ -32,16 +32,12 @@ int main(int argc, char* argv[]) {
 		}
 		else if (arg == "-scriptfile") {
 
-			cout << "Scriptfile " << argv[i+1] << endl;
-
 			i++;
 			
 			bi->setFile(argv[i]);
 
 		}
 		else if (arg == "-startlevel") {
-
-			cout << "Startlevel " << argv[i+1] << endl;
 
 			i++;
 		
@@ -52,19 +48,23 @@ int main(int argc, char* argv[]) {
 
 	}
 
-	//cout << "Call start game" << endl;	
-
 	if (!bi->textOnly()) {
 
 		Xwindow *xw = new Xwindow(1000, 600);
-
-		cout << "[Main] Xwindow: " << xw << endl;
 
 		bi->setWindow(xw);
 
 	}
 
 	bi->startGame();
+
+	cout << "Level: \t" << bi->getLevel() << endl;
+	cout << "Score: \t" << bi->getScore() << endl;
+	cout << "Moves Remaining: Infinite" << endl;
+	cout << "Hi Score: " << bi->getHighScore() << endl;
+	cout << "--------------------" << endl;
+	bi->printBoard();
+//	bi->swap(0, 0, -1);
 
 	string input;
 
@@ -92,56 +92,18 @@ int main(int argc, char* argv[]) {
 			bi->swap(x, y, z);
 
 		}
-//Testing for special math functions, remove later
-		else if (cmd == "clearRow"){
-			int row;
-			ss >> row;
-			bi->clearRow(row);
-		}
-		else if(cmd == "clearCol"){
-			int col;
-			ss >> col;
-			bi->clearCol(col);
-		}
-		else if(cmd == "explode"){
-			int x;
-			int y;
-			int width;
-			ss >> x;
-			ss >> y;
-			ss >> width;
-			bi->explode(x,y,width);
-		}
-		else if(cmd == "clearColour"){
-			int colour;
-			ss>>colour;
-			bi->clearColour(colour);
-		}
-		else if(cmd == "match3"){
-			bi->match3();
-		}
-		else if(cmd == "match4"){
-			bi->match4();
-		}
-		else if(cmd == "match5"){
-			bi->match5();
-		}
-		else if(cmd == "matchL"){
-			bi->matchL();
-		}	
-			
 		else if (cmd == "hint") {
 
 			int *result = bi->hint();
 
 			if (result) {
 			
-				cout << "Hint: " << result[0] << " " << result[1] << " " << result[2] << " " << endl;
+				cout << "[HINT]: " << result[0] << " " << result[1] << " " << result[2] << " " << endl;
 
 			}
 			else {
 
-				cout << "No possible moves";
+				cout << "There are no possible moves, please scramble.";
 
 			}
 
@@ -150,7 +112,10 @@ int main(int argc, char* argv[]) {
 		}
 		else if (cmd == "scramble") {
 
-			if (bi->hint()) {
+
+			int *result = bi->hint();
+
+			if (result) {
 
 				cout << "There exists at least one possible move." << endl;
 
@@ -160,6 +125,8 @@ int main(int argc, char* argv[]) {
 				bi->scramble();
 
 			}
+
+			delete result;
 
 		}
 		else if (cmd == "levelup") {
@@ -182,31 +149,18 @@ int main(int argc, char* argv[]) {
 			bi->printBoard();
 
 		}
-		else if (cmd == "remove") {
-
-			// TEMPORARY TESTING THING NEED TO DELETE LATER
-
-			int r;
-			int c;
-
-			ss >> r;
-			ss >> c;
-
-			bi->remove(r, c);	
-	
-		}
-		else if (cmd == "dropfill") {
-
-
-			bi->dropFillTemp();
-			// TEMPORARY TESTING THING NEED TO DELETE LATER
-
-		}
 		else if (cmd == "info" || cmd == "debug") {
 
 			// For debugging purposes
 
 		}
+
+		cout << "Level: \t" << bi->getLevel() << endl;
+		cout << "Score: \t" << bi->getScore() << endl;
+		cout << "Moves Remaining: Infinite" << endl;
+		cout << "Hi Score: " << bi->getHighScore() << endl;
+		cout << "--------------------" << endl;
+		bi->printBoard();
 
 
 
@@ -214,9 +168,6 @@ int main(int argc, char* argv[]) {
 
 	}
 
-//	bi->endGame();
-//	delete bi->getInstance();
-//	Board::cleanup();
 	delete bi;
 
 	return 0;

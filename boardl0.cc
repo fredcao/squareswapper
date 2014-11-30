@@ -14,15 +14,9 @@ BoardL0::BoardL0() : scoreNeeded(200)  {
 
 	}
 
-	cout << "[Board Initialized: Level 0]" << endl;	
-
-	cout << "Xwindow: " << xw << endl;
-
 }
 
 BoardL0::~BoardL0() {
-
-	cout << "BoardL0 destructor called" << endl;
 
 	clearBoard();
 

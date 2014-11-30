@@ -42,33 +42,22 @@ class Board {
 	TextDisplay *td;
 	static Xwindow *xw;
 
-	// Private stuff
-	public:			//TESTING, CHANGE BACK TO PROTECTED LATER
+	protected:
 	int clearRow(int row);
 	int clearCol(int col);
 	int explode(int centerX, int centerY, int width);
 	int clearColour(int colour);
 	
 
-	protected:
-
 	void readFile();
-	
 	int getRand(int x, int y);
-
 	Square *makeSquare(int r, int c, int type, int colour, bool locked);
-	
 	virtual Square *getSquare(int r, int c);
-
 	int doEffect(Square *sq, int width);
-
 	int dropSquare(int currentRow, int col);
 	void dropFill();
-
 	int countLocked();
-
 	void clearBoard();
-
 	void draw();
 
 	public:
