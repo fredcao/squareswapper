@@ -71,7 +71,12 @@ void Xwindow::drawRectangle(int x, int y, int width, int height, int colour, boo
   int copyWidth = width;
   int copyHeight = height;
 
-  if (type == 1) {
+  if (colour == Black) {
+
+	// Do nothing
+
+  }
+  else if (type == 1) {
 
 //	cout << "Drawing Lateral" << endl;
 
@@ -170,18 +175,19 @@ void Xwindow::drawString(int x, int y, int level, int score, int highscore, int 
   string str4 = "SCORE: " + str;
   ss3 << movesLeft;
   ss3 >> str;
-  string str5 = "MOVESLEFT: " + str;
+  string str5;
+  if (movesLeft >= 0) {
+	str5 = "MOVESLEFT: " + str;
+  }
+  else {
+	str5 = "MOVESLEFT: Infinite";
+  }
   ss4 << highscore;
   ss4 >> str;
   string str6 = "HIGHSCORE: " + str;
 
-  XSetForeground(d, gc, colours[White]);  
-  XDrawString(d, w, DefaultGC(d, s), x, 100, str1.c_str(), str1.length()); 
-  XDrawString(d, w, DefaultGC(d, s), x, 150, str2.c_str(), str2.length());
-  XDrawString(d, w, DefaultGC(d, s), x, 250, str3.c_str(), str3.length());
-  XDrawString(d, w, DefaultGC(d, s), x, 300, str4.c_str(), str4.length());
-  XDrawString(d, w, DefaultGC(d, s), x, 350, str5.c_str(), str5.length());
-  XDrawString(d, w, DefaultGC(d, s), x, 400, str6.c_str(), str6.length());
+  XSetForeground(d, gc, colours[White]);
+  XFillRectangle(d, w, gc, x, 0, 300, 600);
   XDrawString(d, w, DefaultGC(d, s), x, 100, str1.c_str(), str1.length()); 
   XDrawString(d, w, DefaultGC(d, s), x, 150, str2.c_str(), str2.length());
   XDrawString(d, w, DefaultGC(d, s), x, 250, str3.c_str(), str3.length());
