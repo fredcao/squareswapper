@@ -19,8 +19,9 @@ string Board::file = "";
 string Board::colourInput = "";
 int Board::colourInputIndex = 0;
 int Board::startLevel = 0;
+Xwindow *Board::xw = NULL;
 
-Board::Board() : td(NULL), xw(NULL) { 
+Board::Board() : td(NULL) { 
 
 	/*
 

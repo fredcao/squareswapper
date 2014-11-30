@@ -38,7 +38,7 @@ class Board {
 	Square **stack;
 
 	TextDisplay *td;
-	Xwindow *xw;
+	static Xwindow *xw;
 
 	// Private stuff
 	public:			//TESTING, CHANGE BACK TO PROTECTED LATER
