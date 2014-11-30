@@ -123,19 +123,19 @@ void Board::readFile() {
 		int colour = input.at(2) - '0';
 
 		if(type == '_'){
-			board[i][j] = new BasicSquare(i,j,colour,locked);
+			board[i][j] = new BasicSquare(i,j,colour,locked, xw);
 		}
 		else if(type == 'h'){
-			board[i][j] = new LateralSquare(i,j,colour,locked);
+			board[i][j] = new LateralSquare(i,j,colour,locked, xw);
 		}
 		else if(type == 'v'){
-			board[i][j] = new UprightSquare(i,j,colour,locked);
+			board[i][j] = new UprightSquare(i,j,colour,locked, xw);
 		}
 		else if(type == 'b'){
-			board[i][j] = new UnstableSquare(i,j,colour,locked);
+			board[i][j] = new UnstableSquare(i,j,colour,locked, xw);
 		}
 		else if(type == 'p'){
-			board[i][j] = new PsychedelicSquare(i,j,colour,locked);
+			board[i][j] = new PsychedelicSquare(i,j,colour,locked, xw);
 		}
 
 
