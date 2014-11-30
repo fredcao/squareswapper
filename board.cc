@@ -544,5 +544,12 @@ void Board::dropFill() {
 }
 
 
+void Board::draw() {
+
+ 	if (xw) {
+
+		xw->drawString(700, 50, level, score, highscore, movesLeft);
 
 
+	}
+}

@@ -8,6 +8,8 @@ PsychedelicSquare::PsychedelicSquare(int row,int col, int colour, bool locked, X
 	this->colour = colour;
 	this->type = 4;
 	this->locked = locked;
+	this->xw = xw;
+	draw();
 
 }
 
@@ -15,8 +17,10 @@ PsychedelicSquare::~PsychedelicSquare(){}
 
 void PsychedelicSquare::draw() {
 
-	xw->drawRectangle(row, col, len, len, colour, locked, type);
+	if (xw) {
+		xw->drawRectangle(col * len, row * len, len, len, colour, locked, type);
 
+	}
 
 }
 void PsychedelicSquare::print() {

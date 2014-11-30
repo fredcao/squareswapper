@@ -8,6 +8,8 @@ UprightSquare::UprightSquare(int row, int col, int colour, bool locked, Xwindow 
 	this->colour = colour;
 	this->type = 2;
 	this->locked = locked;
+	this->xw = xw;
+	draw();
 
 }
 
@@ -15,8 +17,10 @@ UprightSquare::~UprightSquare(){}
 
 void UprightSquare::draw() {
 
-	xw->drawRectangle(row, col, len, len, colour, locked, type);
+	if (xw) {
 
+		xw->drawRectangle(col * len, row * len, len, len, colour, locked, type);
+	}
 
 }
 void UprightSquare::print() {

@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 
 	if (!bi->textOnly()) {
 
-		Xwindow *xw = new Xwindow(600, 600);
+		Xwindow *xw = new Xwindow(1000, 600);
 
 		cout << "[Main] Xwindow: " << xw << endl;
 

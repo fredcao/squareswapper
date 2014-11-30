@@ -18,9 +18,12 @@ BasicSquare::~BasicSquare(){}
 
 void BasicSquare::draw() {
 
-	cout << "[BSquare] Xw: " << xw << endl;
+	if (xw) {
+//	cout << "[BSquare] Xw: " << xw << endl;
 
-	xw->drawRectangle(row, col, len, len, colour, locked, type);
+		xw->drawRectangle(col * len, row * len, len, len, colour, locked, type);
+
+	}
 
 }
 void BasicSquare::print() {

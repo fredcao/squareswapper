@@ -8,14 +8,18 @@ LateralSquare::LateralSquare(int row,int col,int colour,bool locked, Xwindow *xw
 	this->colour = colour;
 	this->type = 1;
 	this->locked = locked;
+	this->xw = xw;
+	draw();
 }
 
 LateralSquare::~LateralSquare(){}
 
 void LateralSquare::draw() {
 
-	xw->drawRectangle(row, col, len, len, colour, locked, type);
+	if (xw) {
+		xw->drawRectangle(col * len, row * len, len, len, colour, locked, type);
 
+	}
 
 }
 void LateralSquare::print() {

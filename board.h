@@ -63,6 +63,7 @@ class Board {
 
 	void clearBoard();
 
+	void draw();
 
 	public:
 

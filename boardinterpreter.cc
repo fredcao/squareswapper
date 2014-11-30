@@ -44,6 +44,8 @@ void BoardInterpreter::startGame() {
 
 	delete instance;
 
+//	draw();
+
 	level = startLevel;
 
 	cout << "Starting game at level ... " << level << endl;
@@ -73,6 +75,8 @@ void BoardInterpreter::startGame() {
 	atexit(cleanup);	
 
 	instance->constructBoard();
+
+	draw();
 
 }	
 

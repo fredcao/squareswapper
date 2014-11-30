@@ -8,6 +8,8 @@ UnstableSquare::UnstableSquare(int row,int col,int colour,bool locked, Xwindow *
 	this->colour = colour;
 	this->type = 3;
 	this->locked = locked;
+	this->xw = xw;
+	draw();
 
 }
 
@@ -15,8 +17,11 @@ UnstableSquare::~UnstableSquare(){}
 
 void UnstableSquare::draw() {
 
+	if (xw) {
 
-	xw->drawRectangle(row, col, len, len, colour, locked, type);
+		xw->drawRectangle(col * len, row * len, len, len, colour, locked, type);
+
+	}
 
 }
 void UnstableSquare::print() {
