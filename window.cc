@@ -177,10 +177,10 @@ void Xwindow::drawString(int x, int y, int level, int score, int highscore, int 
   ss3 >> str;
   string str5;
   if (movesLeft >= 0) {
-	str5 = "MOVESLEFT: " + str;
+	str5 = "MOVES LEFT: " + str;
   }
   else {
-	str5 = "MOVESLEFT: Infinite";
+	str5 = "MOVES LEFT: Infinite";
   }
   ss4 << highscore;
   ss4 >> str;

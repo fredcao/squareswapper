@@ -75,6 +75,8 @@ int main(int argc, char* argv[]) {
 
 	while (!cin.eof()) {
 
+		bool update = true;
+
 		istringstream ss(input);
 
 		ss >> cmd;
@@ -90,6 +92,8 @@ int main(int argc, char* argv[]) {
 			ss >> z;
 
 			bi->swap(x, y, z);
+			
+			update = true;
 
 		}
 		else if (cmd == "hint") {
@@ -103,7 +107,7 @@ int main(int argc, char* argv[]) {
 			}
 			else {
 
-				cout << "There are no possible moves, please scramble.";
+				cout << "There are no possible moves, please scramble." << endl;
 
 			}
 
@@ -126,22 +130,30 @@ int main(int argc, char* argv[]) {
 
 			}
 
-			delete result;
+			delete [] result;
+
+			update = true;
 
 		}
 		else if (cmd == "levelup") {
 
 			bi->levelUp();
+
+			update = true;
 	
 		}
 		else if (cmd == "leveldown") {
 
 			bi->levelDown();
+
+			update = true;
 		
 		}
 		else if (cmd == "restart") {
 
 			bi->restart();
+	
+			update = true;
 		
 		}
 		else if (cmd == "print") {
@@ -155,14 +167,17 @@ int main(int argc, char* argv[]) {
 
 		}
 
-		cout << "Level: \t" << bi->getLevel() << endl;
-		cout << "Score: \t" << bi->getScore() << endl;
-		cout << "Moves Remaining: Infinite" << endl;
-		cout << "Hi Score: " << bi->getHighScore() << endl;
-		cout << "--------------------" << endl;
-		bi->printBoard();
 
+		if (update) {
 
+			cout << "Level: \t" << bi->getLevel() << endl;
+			cout << "Score: \t" << bi->getScore() << endl;
+			cout << "Moves Remaining: Infinite" << endl;
+			cout << "Hi Score: " << bi->getHighScore() << endl;
+			cout << "--------------------" << endl;
+			bi->printBoard();
+
+		}
 
 		getline(cin, input);
 

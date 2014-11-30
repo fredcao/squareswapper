@@ -31,12 +31,6 @@ void BoardInterpreter::remove(int r, int c) {
 
 }
 
-void BoardInterpreter::dropFillTemp() {
-
-	dropFill();
-
-}
-
 void BoardInterpreter::startGame() {
 
 	delete instance;
@@ -335,23 +329,13 @@ int *BoardInterpreter::hint() {
 		}
 	}
 
+	delete ans;
 	return NULL;			
 
 }
 
 void BoardInterpreter::scramble() {
-	Square* newTemp1;
-	Square* newTemp2;
 
-	int *hintResult = hint();
-
-	if (hintResult) {
-
-		delete hintResult;
-
-		return;
-
-	}
 
 	int times = getRand(5, 30);
 
@@ -359,32 +343,31 @@ void BoardInterpreter::scramble() {
 
 	do {
 
-		delete hintResult;
-
 		int x1 = getRand(0, 9);
 		int y1 = getRand(0, 9);
 
 		int x2 = getRand(0, 9);
 		int y2 = getRand(0, 9);
 
-		// Swap (x1, y1) with (x2, y2)
-		// Make sure the properties switch
-		// Row, col, locked
-
-		newTemp1 = makeSquare(x1,y1,board[x2][y2]->getType(),board[x2][y2]->getColour(),board[x1][y1]->getLocked());
-		newTemp2 = makeSquare(x2,y2,board[x1][y1]->getType(),board[x1][y1]->getColour(),board[x2][y2]->getLocked());
+		int colour1 = board[x1][y1]->getColour();
+		int type1 = board[x1][y1]->getType();
+		bool locked1 = board[x1][y1]->getLocked();
+		bool locked2 = board[x2][y2]->getLocked();
+	
 		delete board[x1][y1];
-		board[x1][y1] = newTemp1;
+
+		board[x1][y1] = makeSquare(x1,y1,board[x2][y2]->getType(),board[x2][y2]->getColour(),locked1);
+		
 		delete board[x2][y2];
-		board[x2][y2] = newTemp2;
 
-		hintResult = hint();
-
+		board[x2][y2] = makeSquare(x2, y2, type1, colour1, locked2);
+		
 		times--;
 
-	} while (times > 0 || !hintResult);
+	} while (times > 0); 
 
-	delete hintResult;
+	swap(0, 0, -1);
+
 
 }
 
@@ -397,8 +380,6 @@ void BoardInterpreter::levelUp() {
 		levelScore = 0;
 
 		startGame();
-
-		printBoard();
 
 	}
 
@@ -414,8 +395,6 @@ void BoardInterpreter::levelDown() {
 		levelScore = 0;
 
 		startGame();
-
-		printBoard();
 
 	}
 
@@ -433,8 +412,6 @@ void BoardInterpreter::restart() {
 	score = 0;
 	levelScore = 0;
 
-	printBoard();
-	
 
 }
 
