@@ -11,10 +11,10 @@ class BoardInterpreter : public Board {
 
 	// Private stuff
 	public: // TEmp
-	void match3();
-	void match4();
-	void match5();
-	void matchL();
+	int match3();
+	int match4();
+	int match5();
+	int matchL();
 
 	public:
 
