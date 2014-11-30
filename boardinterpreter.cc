@@ -1,6 +1,8 @@
+
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <cmath>
 #include "basicsquare.h"
 #include "lateralsquare.h"
 #include "uprightsquare.h"
@@ -77,12 +79,76 @@ void BoardInterpreter::startGame() {
 
 void BoardInterpreter::swap(int x, int y, int z) {
 
+	Square *temp = board[x][y];
+
+	if (z == 0) {
+
+		board[x][y] = board[x-1][y];
+		board[x-1][y] = temp;
+
+	}
+	else if (z == 1) {
+
+		board[x][y] = board[x+1][y];
+		board[x+1][y] = temp;
+
+	}
+	else if (z == 2) {
+
+		board[x][y] = board[x][y-1];
+		board[x][y-1] = temp;
+
+	}
+	else if (z == 3) {
+
+		board[x][y] = board[x][y+1];
+		board[x][y+1] = temp;
+
+	}
+
+	int points;
+	int newPoints = -1;
+	int n = 1;
+			
+	while (newPoints != 0) {
+
+		newPoints = 0;	
+
+		//newPoints += matchL();
+		//newPoints += match5();
+		//newPoints += match4();
+		//newPoints += match3();
+
+		points += newPoints * static_cast<int>(pow(2, n));
+
+		n++;
+
+		cout << "Points earned in chain reaction (" << n << "): " << newPoints * pow(2, n) << endl;
+
+		dropFill();
+
+	}
+
+	score += points;
+
+	if (score > highscore) {
+
+		highscore = score;
+
+	}
+
+
+	// 0 N
+	// 2 W
+	// 3 E
+	// 1 S
+
 
 }
 
 int *BoardInterpreter::hint() {
 	int curColour;
-	int ans[3];
+	int *ans = new int[3];
 	for(int i=0;i<boardSize;i++){		//find horizontal row of two
 		for(int j=0;j<boardSize-1;j++){
 			curColour=board[i][j]->getColour();
@@ -330,12 +396,12 @@ void BoardInterpreter::match5() {
 
 // Same thing as match4 except...
 // Really this is match 5 or more as matching for example 10 gives you the same result
-	 int curColour;
+	int curColour;
         int count = 1;
         for(int i=0;i<boardSize;i++){
                 for(int j=0;j<boardSize-4;j++){         //horizontal
                         if(board[i][j]){
-                                curColour==board[i][j]->getColour();
+                                curColour = board[i][j]->getColour();
                                 for(int k=j+1;k<boardSize;k++){
                                         if(!(board[i][k]&&board[i][k]->getColour()==curColour)){
                                                 break;

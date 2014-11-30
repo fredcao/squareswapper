@@ -328,7 +328,7 @@ void Board::cleanup() {
 // [ PROTECTED AND PRIVATE METHODS ]
 
 
-void Board::clearRow(int row) {
+int Board::clearRow(int row) {
 
 	// Remember board is 2D array of Square *
 	// I.e. board[i][j] is a Square *
@@ -338,6 +338,8 @@ void Board::clearRow(int row) {
 	// IMPORTANT: WHEN USING A LOOP, PLEASE CHECK THAT THE POINTER IS NOT NULL
 
 	// Err it seems like I did this for you already :P
+
+	int sqCount = 0;
 
 	for (int j = 0; j < boardSize; j++) {
 	
@@ -352,11 +354,15 @@ void Board::clearRow(int row) {
 	}
 			
 
+	return sqCount;
+
 }
 
 // TODO [KCXUE]: Implement clearCol
 
-void Board::clearCol(int col) {
+int Board::clearCol(int col) {
+
+	int sqCount = 0;
 
 	// Same idea as clearRow, except for columns
 	for(int i = 0; i < boardSize; i++) {
@@ -371,11 +377,15 @@ void Board::clearCol(int col) {
 
 	}
 
+	return sqCount;
+
 }
 
 
 
-void Board::explode(int centerX, int centerY, int width) {
+int Board::explode(int centerX, int centerY, int width) {
+
+	int sqCount = 0;
 
 
 	// This one is a bit more complicated
@@ -399,13 +409,17 @@ void Board::explode(int centerX, int centerY, int width) {
 			}
 		}
 	}
+
+	return sqCount;
 }
 
-void Board::clearColour(int colour) {
+int Board::clearColour(int colour) {
 
 	// Given a colour, search through the whole board array and notify all Squares of colour
 	// Of course, must check that the pointer isn't null before checking the colour
-		
+
+	int sqCount = 0;		
+
 	for(int i = 0; i < boardSize; i++){
 		for(int j = 0; j < boardSize;j++){
 			if(board[i][j] && board[i][j]->getColour()==colour){
@@ -415,15 +429,17 @@ void Board::clearColour(int colour) {
 			}
 		}
 	}
+
+	return sqCount;
 }
 
-void Board::doEffect(Square *sq, int width = 3) {
+int Board::doEffect(Square *sq, int width = 3) {
 
 	if (sq->getLocked()) {
 
 		sq->notify();
 
-		return;
+		return 1;
 	}
 	int row = sq->getRow();
 	int col = sq->getCol();
@@ -436,30 +452,32 @@ void Board::doEffect(Square *sq, int width = 3) {
 			if(!sq->notify()){
 				board[row][col]=NULL;
 			}
+
+			return 1;
 			// Do nothing
 			break;
 
 		case Square::LateralSquare:
 
-			clearRow(sq->getRow());
+			return clearRow(sq->getRow());
 			// clearRow
 			break;
 
 		case Square::UprightSquare:
 			
-			clearCol(sq->getCol());
+			return clearCol(sq->getCol());
 			//clearCol
 			break;
 
 		case Square::UnstableSquare:
 
-			explode(sq->getRow(), sq->getCol(), width);
+			return explode(sq->getRow(), sq->getCol(), width);
 			//explode
 			break;
 
 		case Square::PsychedelicSquare:
 
-			clearColour(sq->getColour());
+			return clearColour(sq->getColour());
 
 			// clearColour
 
@@ -470,6 +488,9 @@ void Board::doEffect(Square *sq, int width = 3) {
 			break;
 
 	}
+
+	return 0;
+
 }
 
 int Board::dropSquare(int currentRow, int col) {
