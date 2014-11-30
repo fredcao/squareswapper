@@ -10,7 +10,6 @@ class BoardInterpreter : public Board {
 
 
 	// Private stuff
-	public: // TEmp
 	int match3();
 	int match4();
 	int match5();

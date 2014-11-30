@@ -529,7 +529,7 @@ int Board::dropSquare(int currentRow, int col) {
 }
 
 void Board::dropFill() {
-	//bool prevLocked = false;
+	bool prevLocked = false;
 	for (int j = 0; j < boardSize; j++) {
 
 		for (int i = boardSize - 1; i >= 0; i--) {
@@ -544,11 +544,11 @@ void Board::dropFill() {
 
 					int type = board[nextSq][j]->getType();
 					int colour = board[nextSq][j]->getColour();
-					int locked = board[nextSq][j]->getLocked();
+					int locked = prevLocked;
+					prevLocked = board[nextSq][j]->getLocked();
 					delete board[nextSq][j];
 					
 					board[i][j] = makeSquare(i, j, type, colour, locked);
-					//prevLocked = board[nextSq][j]->getLocked();
 					board[nextSq][j] = NULL;
 
 				}
