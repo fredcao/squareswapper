@@ -81,6 +81,8 @@ void BoardInterpreter::swap(int x, int y, int z) {
 
 	Square *temp = board[x][y];
 
+	// Transfer properties
+
 	if (z == 0) {
 
 		board[x][y] = board[x-1][y];
@@ -333,6 +335,8 @@ void BoardInterpreter::levelUp() {
 
 		startGame();
 
+		printBoard();
+
 	}
 
 
@@ -346,6 +350,8 @@ void BoardInterpreter::levelDown() {
 
 		startGame();
 
+		printBoard();
+
 	}
 
 
@@ -354,6 +360,12 @@ void BoardInterpreter::levelDown() {
 
 void BoardInterpreter::restart() {
 
+
+	clearBoard();
+
+	instance->constructBoard();
+
+	printBoard();
 	
 
 }

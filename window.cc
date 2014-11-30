@@ -174,6 +174,14 @@ void Xwindow::drawString(int x, int y, int level, int score, int highscore, int 
   ss4 << highscore;
   ss4 >> str;
   string str6 = "HIGHSCORE: " + str;
+
+  XSetForeground(d, gc, colours[White]);  
+  XDrawString(d, w, DefaultGC(d, s), x, 100, str1.c_str(), str1.length()); 
+  XDrawString(d, w, DefaultGC(d, s), x, 150, str2.c_str(), str2.length());
+  XDrawString(d, w, DefaultGC(d, s), x, 250, str3.c_str(), str3.length());
+  XDrawString(d, w, DefaultGC(d, s), x, 300, str4.c_str(), str4.length());
+  XDrawString(d, w, DefaultGC(d, s), x, 350, str5.c_str(), str5.length());
+  XDrawString(d, w, DefaultGC(d, s), x, 400, str6.c_str(), str6.length());
   XDrawString(d, w, DefaultGC(d, s), x, 100, str1.c_str(), str1.length()); 
   XDrawString(d, w, DefaultGC(d, s), x, 150, str2.c_str(), str2.length());
   XDrawString(d, w, DefaultGC(d, s), x, 250, str3.c_str(), str3.length());
