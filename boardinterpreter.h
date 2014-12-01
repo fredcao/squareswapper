@@ -38,10 +38,6 @@ class BoardInterpreter : public Board {
 	
 	bool textOnly();
 
-	// Temporary functions need to delete after
-	void remove(int r, int c);
-
-	void dropFillTemp();
 };
 
 #endif
