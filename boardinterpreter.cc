@@ -62,10 +62,14 @@ void BoardInterpreter::startGame() {
 	draw();
 
 	instance->constructBoard();
-	
+
 	draw();
+
+	cout << "Before swap" << endl;
 	
 	swap(0, 0, -1);
+
+	cout << "After swap" << endl;
 	
 }	
 
@@ -144,16 +148,27 @@ void BoardInterpreter::swap(int x, int y, int z) {
 	int newSquares = -1;
 	int newPoints;
 	int n = 0;
-			
+
+	cout << "Before while" << endl;
+
 	while (newSquares != 0) {
 
 		newSquares = 0;	
 		newPoints = 0;
 
+
+		cout << "Before match functions" << endl;
+
 		newSquares += matchL();
+		cout << "Match L: success" << endl;
 		newSquares += match5();
+		cout << "Match 5: success" << endl;
 		newSquares += match4();
+		cout << "Match 4: success" << endl;
 		newSquares += match3();
+		cout << "Match 3: success" << endl;
+	
+		cout << "After match functions" << endl;
 		
 		if (newSquares == 3) {
 			newPoints += 3;
@@ -178,7 +193,9 @@ void BoardInterpreter::swap(int x, int y, int z) {
 		points += newPoints * static_cast<int>(pow(2, n));
 
 		n++;
+		cout << "Before dropFill" << endl;
 		dropFill();
+		cout << "After dropFill" << endl;
 
 	}
 
@@ -190,6 +207,8 @@ void BoardInterpreter::swap(int x, int y, int z) {
 		highscore = score;
 
 	}
+
+	cout << "Before get score" << endl;
 
 	if (levelScore >= getScoreNeeded()) { 
 
@@ -205,7 +224,7 @@ void BoardInterpreter::swap(int x, int y, int z) {
 	}
 	
 	draw();
-	
+	cout << "End of function" << endl;	
 
 	// 0 N
 	// 2 W
