@@ -626,9 +626,10 @@ int BoardInterpreter::matchL() {
 							board[i][j]= new UnstableSquare(i,j,curColour,false,xw);
 						}
                                                 j+=3;
+						continue;
                                         }
                                         else if(board[i-1][j+2]&&board[i-2][j+2]&&board[i-1][j+2]->getColour()==curColour&&board[i-2][j+2]->getColour()==curColour){
-                                                if(board[i][j])sqCount+=doEffect(board[i][j],5);
+						if(board[i][j])sqCount+=doEffect(board[i][j],5);
                                                 if(board[i][j+1])sqCount+=doEffect(board[i][j+1],5);
                                                 if(board[i][j+2])sqCount+=doEffect(board[i][j+2],5);
                                                 if(board[i-1][j+2])sqCount+=doEffect(board[i-1][j+2],5);
@@ -637,11 +638,12 @@ int BoardInterpreter::matchL() {
 							board[i][j+2]= new UnstableSquare(i,j+2,curColour,false,xw);
 						}
                                                 j+=3;
+						continue;
                                         }
                                 }
 				 if(i<8){
                                         if(board[i+1][j]&&board[i+2][j]&&board[i+1][j]->getColour()==curColour&&board[i+2][j]->getColour()==curColour){
-                                                if(board[i][j])sqCount+=doEffect(board[i][j],5);
+						if(board[i][j])sqCount+=doEffect(board[i][j],5);
                                                 if(board[i][j+1])sqCount+=doEffect(board[i][j+1],5);
                                                 if(board[i][j+2])sqCount+=doEffect(board[i][j+2],5);
                                                 if(board[i+1][j])sqCount+=doEffect(board[i+1][j],5);
@@ -650,9 +652,10 @@ int BoardInterpreter::matchL() {
 							board[i][j] = new UnstableSquare(i,j,curColour,false,xw);
 						}
                                                 j+=3;
+						continue;
                                         }
                                         else if(board[i+1][j+2]&&board[i+2][j+2]&&board[i+1][j+2]->getColour()==curColour&&board[i+2][j+2]->getColour()==curColour){
-                                                if(board[i][j])sqCount+=doEffect(board[i][j],5);
+						if(board[i][j])sqCount+=doEffect(board[i][j],5);
                                                 if(board[i][j+1])sqCount+=doEffect(board[i][j+1],5);
                                                 if(board[i][j+2])sqCount+=doEffect(board[i][j+2],5);
                                                 if(board[i+1][j+2])sqCount+=doEffect(board[i+1][j+2],5);
@@ -661,6 +664,7 @@ int BoardInterpreter::matchL() {
 						board[i][j+2]= new UnstableSquare(i,j+2,curColour,false,xw);
 						}
                                                 j+=3;
+						continue;
                                         }
                                 }
                         }
