@@ -170,6 +170,12 @@ void BoardInterpreter::swap(int x, int y, int z) {
 		}
 			
 		points += newPoints * static_cast<int>(pow(2, n));
+		if (levelScore + points >= getScoreNeeded()) {
+			if(level != 2 || countLocked() == 0){
+				dropFill();
+				break;
+			}
+		}
 
 		n++;
 		dropFill();
