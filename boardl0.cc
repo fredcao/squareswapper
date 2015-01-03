@@ -22,30 +22,18 @@ BoardL0::~BoardL0() {
 
 	for (int i = 0; i < boardSize; i++) {
 
-	//	for (int j = 0; j < boardSize; j++) {
-
-	//		delete board[i][j];
-
-	//	}
-
 		delete [] board[i];
 
 	}
 
 	delete [] board;
-	//delete td;
-	//delete xw;
+
 }
 
 void BoardL0::constructBoard() {
 
-	//clearBoard();
-
-	//cout << "stratLevel: " << startLevel << "File: " << file << "length: " << file.length() << endl;
 
 	if (startLevel == 0 && file.length() > 0) {
-
-		//cout << "Read file called" << endl;
 
 		readFile();
 		return;
@@ -66,42 +54,34 @@ void BoardL0::constructBoard() {
 			char type = input.at(1);
 			int colour = input.at(2) - '0';
 
-			// cout << locked << type << colour << "     ";
 
+			if (type == '_') {
 
-			if(type == '_'){
-			//	cout << "BS ";
-				board[i][j] = new BasicSquare(i,j,colour,locked, xw);
+				board[i][j] = new BasicSquare(i, j, colour, locked, xw);
+
 			}
-			else if(type == 'h'){
+			else if (type == 'h') {
 	
-			//	cout << "LS";
-				board[i][j] = new LateralSquare(i,j,colour,locked, xw);
+				board[i][j] = new LateralSquare(i, j, colour, locked, xw);
+
 			}
-			else if(type == 'v'){
-			//	cout << "US";
-				board[i][j] = new UprightSquare(i,j,colour,locked, xw);
+			else if (type == 'v') {
+
+				board[i][j] = new UprightSquare(i, j, colour, locked, xw);
+
 			}
-			else if(type == 'b'){
+			else if (type == 'b') {
 	
-			//	cout << "SS";
-				board[i][j] = new UnstableSquare(i,j,colour,locked, xw);
-			}
-			else if(type == 'p'){
+				board[i][j] = new UnstableSquare(i, j, colour, locked, xw);
 	
-			//	cout << "PS";
-				board[i][j] = new PsychedelicSquare(i,j,colour,locked, xw);
+			}
+			else if (type == 'p') {
+	
+				board[i][j] = new PsychedelicSquare(i, j, colour, locked, xw);
+
 			}
 			
-
-		//Ignore this for now
-		//board[i][j]->notifyTD();
-		//board[i][j]->draw();
-		
-
 		}
-
-		// cout << endl;
 
 	}
 

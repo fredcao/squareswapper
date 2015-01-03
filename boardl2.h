@@ -6,8 +6,6 @@
 class BoardL2 : public Board {
 
 
-	// Private stuff
-
 	int scoreNeeded;
 
 	public:

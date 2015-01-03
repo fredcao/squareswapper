@@ -42,7 +42,6 @@ class Board {
 	TextDisplay *td;
 	static Xwindow *xw;
 
-	protected:
 	int clearRow(int row);
 	int clearCol(int col);
 	int explode(int centerX, int centerY, int width);

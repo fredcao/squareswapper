@@ -24,52 +24,10 @@ Xwindow *Board::xw = NULL;
 
 Board::Board() : td(NULL) { 
 
-	/*
-
-	board = new Square**[boardSize];
-
-	
-	for (int i = 0; i < boardSize; i++) {
-
-		board[i] = new Square *[boardSize];
-
-		for (int j = 0; j < boardSize; j++) {
-
-			//board[i][j] = new BasicSquare();
-	
-		}
-
-	
-	}
-
-	cout << "[Board Initialized]" << endl;
-
-	*/
-
 }
 
 Board::~Board() {
 
-/*
-	clearBoard();
-
-	for (int i = 0; i < boardSize; i++) {
-
-	//	for (int j = 0; j < boardSize; j++) {
-
-	//		delete board[i][j];
-
-	//	}
-
-		delete [] board[i];
-
-	}
-
-	delete [] board;
-	//delete td;
-	//delete xw;
-
-*/
 
 }
 
@@ -91,23 +49,11 @@ void Board::clearBoard() {
 }
 
 void Board::constructBoard() {
-/*	for (int i = 0; i < boardSize; i++) {
-
-		board[i] = new Square *[boardSize];
-
-		for (int j = 0; j < boardSize; j++) {
-
-			//board[i][j] = new BasicSquare();
-	
-		}
-
-	}*/
 
 }
 
 void Board::readFile() {
 
-//	cout << "Readfile: " << file << endl;
 
 	ifstream fs(file.c_str());
 
@@ -152,14 +98,9 @@ void Board::readFile() {
 
 	}
 
-//	printBoard();
 }
 
 int Board::getRand(int x, int y) {
-
-// getRand(0, 10) ->
-
-// getRand(5, 20) -> getRand(0, 15) + 5
 
 	if (!seeded) {
 
@@ -290,22 +231,6 @@ void Board::printBoard() {
 				cout << "    ";
 
 			}
-/*
-
-			if (board[i][j]->getLocked()) {
-
-				cout << "l" << endl;
-	
-			}
-			else {
-
-				cout << "_" << endl;
-
-			}
-
-			cout << board[i][j
-
-*/			//board[i][j]->getType() << board[i][j]->getColour() << " ";
 
 		}
 
@@ -328,27 +253,25 @@ void Board::cleanup() {
 
 int Board::clearRow(int row) {
 
-	// Remember board is 2D array of Square *
-	// I.e. board[i][j] is a Square *
-
-	// For clearRow, you're given the row number
-	// You must call notify on each Square in board[i][j] if the pointer is not NULL
-	// IMPORTANT: WHEN USING A LOOP, PLEASE CHECK THAT THE POINTER IS NOT NULL
-
-	// Err it seems like I did this for you already :P
-
 	int sqCount = 0;
 
 	for (int j = 0; j < boardSize; j++) {
 	
 		if (board[row][j]) {
-			if(board[row][j]->getType()!=Square::LateralSquare){
-				sqCount+=doEffect(board[row][j],3);
+
+			if (board[row][j]->getType() != Square::LateralSquare) {
+
+				sqCount += doEffect(board[row][j], 3);
+
 			}
-			else{
+			else {
+
 				sqCount++;
-				if(!board[row][j]->notify()){
-					board[row][j]=NULL;
+
+				if (!board[row][j]->notify()) {
+
+					board[row][j] = NULL;
+
 				}
 			}
 
@@ -361,24 +284,29 @@ int Board::clearRow(int row) {
 
 }
 
-// TODO [KCXUE]: Implement clearCol
-
 int Board::clearCol(int col) {
 
 	int sqCount = 0;
 
-	// Same idea as clearRow, except for columns
-	for(int i = 0; i < boardSize; i++) {
+	for (int i = 0; i < boardSize; i++) {
 
-		if(board[i][col]) {
-			if(board[i][col]->getType()!=Square::UprightSquare){
-				sqCount+=doEffect(board[i][col],3);
+		if (board[i][col]) {
+	
+			if (board[i][col]->getType() != Square::UprightSquare) {
+	
+				sqCount += doEffect(board[i][col], 3);
+	
 			}
-			else{
+			else {
+
 				sqCount++;
-				if(!board[i][col]->notify()){
-					board[i][col]=NULL;
+
+				if (!board[i][col]->notify()) {
+
+					board[i][col] = NULL;
+
 				}
+
 			}
 
 		}
@@ -389,39 +317,38 @@ int Board::clearCol(int col) {
 
 }
 
-
-
 int Board::explode(int centerX, int centerY, int width) {
 
 	int sqCount = 0;
 
+	int r = width / 2;
 
-	// This one is a bit more complicated
-	// You're given centerX and centerY, and width
-	// You must notify all the squares in a width x width square with center (centerX, centerY)
-	// For example, if centerX = 3, cetnerY = 3, width = 3
-	// Then you'd have to notify (if the pointer is not null)
-	// board[2][2], board[2][3], board[2][4]
-	// board[3][2], board[3][3], board[3][4]
-	// board[4][2], board[4][3], board[4][4]
+	for (int i = max(0, centerX-r); i < min(boardSize, centerX+r+1); i++) {
 
-	// This one is more tedious since you have to ensure that you don't go out of bounds
-	// I.e. consider when centerX or centerY is 0 or boardSize (edges and corners of the board)
-	int r = width/2;
-	for(int i = max(0,centerX-r); i < min(boardSize, centerX+r+1);i++){
-		for(int j = max(0,centerY-r); j < min(boardSize, centerY+r+1);j++){
-			if(board[i][j]){
-				if(i==centerX && j==centerY){
+		for (int j = max(0, centerY-r); j < min(boardSize, centerY+r+1); j++) {
+
+			if (board[i][j]) {
+
+				if (i == centerX && j == centerY) {
+
 					sqCount++;
-					if(!board[i][j]->notify()){
+
+					if (!board[i][j]->notify()) {
+
 						board[i][j]=NULL;
+
 					}
 				}
-				else{
-					sqCount+=doEffect(board[i][j],3);
+				else {
+
+					sqCount += doEffect(board[i][j], 3);
+
 				}
+
 			}
+
 		}
+
 	}
 
 	return sqCount;
@@ -429,26 +356,36 @@ int Board::explode(int centerX, int centerY, int width) {
 
 int Board::clearColour(int colour) {
 
-	// Given a colour, search through the whole board array and notify all Squares of colour
-	// Of course, must check that the pointer isn't null before checking the colour
-
 	int sqCount = 0;		
 
-	for(int i = 0; i < boardSize; i++){
-		for(int j = 0; j < boardSize;j++){
-			if(board[i][j] && board[i][j]->getColour()==colour){
-				if(board[i][j]->getType()!=Square::PsychedelicSquare){
-					sqCount+=doEffect(board[i][j],3);
+	for (int i = 0; i < boardSize; i++){
+
+		for (int j = 0; j < boardSize; j++) {
+
+			if (board[i][j] && board[i][j]->getColour() == colour) {
+
+				if (board[i][j]->getType() != Square::PsychedelicSquare) {
+
+					sqCount += doEffect(board[i][j], 3);
+
 				}
 				else{
+
 					sqCount++;
-					if(!board[i][j]->notify()){
-						board[i][j]=NULL;
+
+					if (!board[i][j]->notify()) {
+
+						board[i][j] = NULL;
+
 					}
+
 				}
 				
+
 			}
+
 		}
+
 	}
 
 	return sqCount;
@@ -462,6 +399,7 @@ int Board::doEffect(Square *sq, int width = 3) {
 
 		return 1;
 	}
+
 	int row = sq->getRow();
 	int col = sq->getCol();
 	int type = sq->getType();
@@ -470,8 +408,11 @@ int Board::doEffect(Square *sq, int width = 3) {
 
 
 		case Square::BasicSquare:		
-			if(!sq->notify()){
-				board[row][col]=NULL;
+
+			if (!sq->notify()) {
+
+				board[row][col] = NULL;
+
 			}
 
 			return 1;
@@ -529,7 +470,9 @@ int Board::dropSquare(int currentRow, int col) {
 }
 
 void Board::dropFill() {
+
 	bool prevLocked = false;
+
 	for (int j = 0; j < boardSize; j++) {
 
 		for (int i = boardSize - 1; i >= 0; i--) {
@@ -546,6 +489,7 @@ void Board::dropFill() {
 					int colour = board[nextSq][j]->getColour();
 					int locked = prevLocked;
 					prevLocked = board[nextSq][j]->getLocked();
+				
 					delete board[nextSq][j];
 					
 					board[i][j] = makeSquare(i, j, type, colour, locked);
@@ -555,10 +499,6 @@ void Board::dropFill() {
 				else {
 
 					board[i][j] = getSquare(i, j);
-
-				//	cout << "new square: " << board[i][j]->getLocked() << board[i][j]->getType() << board[i][j]->getColour() << endl;
-					// Fill with new random square
-					// TODO: implement this
 
 				}
 
