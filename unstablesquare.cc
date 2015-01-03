@@ -62,8 +62,6 @@ bool UnstableSquare::notify() {
 		return false;
 	
 	}
-	// Else do stuff and notify textdisplay and Xwindow
-
 
 }
 

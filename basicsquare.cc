@@ -22,7 +22,6 @@ BasicSquare::~BasicSquare(){
 void BasicSquare::draw() {
 
 	if (xw) {
-//	cout << "[BSquare] Xw: " << xw << endl;
 
 		xw->drawRectangle(col * len, row * len, len, len, colour, locked, type);
 
@@ -70,9 +69,5 @@ bool BasicSquare::notify() {
 
 	}
 	
-	
-
-	// Else do stuff and notify textdisplay and Xwindow
-
 }
 

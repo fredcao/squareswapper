@@ -14,8 +14,11 @@ PsychedelicSquare::PsychedelicSquare(int row,int col, int colour, bool locked, X
 }
 
 PsychedelicSquare::~PsychedelicSquare(){
+
 	colour = Black;
+
 	draw();
+
 }
 
 void PsychedelicSquare::draw() {
@@ -26,6 +29,7 @@ void PsychedelicSquare::draw() {
 	}
 
 }
+
 void PsychedelicSquare::print() {
 
 	if (locked) {
@@ -43,6 +47,7 @@ void PsychedelicSquare::print() {
 	cout << colour;
 
 }
+
 bool PsychedelicSquare::notify() {
 
 	if (locked) {
@@ -62,9 +67,6 @@ bool PsychedelicSquare::notify() {
 		return false;
 
 	}
-	// Else do stuff and notify textdisplay and Xwindow
-
 
 }
-
 

@@ -3,12 +3,16 @@
 #include "square.h"
 
 class UnstableSquare: public Square{
+
 	void draw();	
+
 	public:
+
 	UnstableSquare(int row, int col, int colour, bool locked, Xwindow *xw);
 	~UnstableSquare();
 	void print();
 	bool notify();
+
 };
 
 #endif	

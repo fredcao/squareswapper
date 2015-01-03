@@ -2,22 +2,37 @@
 using namespace std;
 
 Square::Square() : len(60) {}
+
 Square::~Square(){}
+
 int Square::getRow(){
+
 	return row;
+
 }
+
 int Square::getCol(){
+
 	return col;
+
 }
+
 int Square::getColour(){
+
         return colour;
+
 }
 
 int Square::getType(){
+
 	return type;
+
 }
+
 bool Square::getLocked(){
+
 	return locked;
+
 }
 
 void Square::setDisplay(TextDisplay *td) {
@@ -25,6 +40,7 @@ void Square::setDisplay(TextDisplay *td) {
 	this->td = td;
 
 }
+
 void Square::setWindow(Xwindow *xw) {
 
 	this->xw = xw;
@@ -48,7 +64,6 @@ void Square::print() {
 	cout << colour;
 
 }
-
 	
 bool Square::notify(){
 

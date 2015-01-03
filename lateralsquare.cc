@@ -10,11 +10,15 @@ LateralSquare::LateralSquare(int row,int col,int colour,bool locked, Xwindow *xw
 	this->locked = locked;
 	this->xw = xw;
 	draw();
+
 }
 
 LateralSquare::~LateralSquare(){
+
 	colour=Black;
+
 	draw();
+
 }
 
 void LateralSquare::draw() {
@@ -42,6 +46,7 @@ void LateralSquare::print() {
 	cout << colour;
 
 }
+
 bool LateralSquare::notify(){
 
 	if (locked) {
@@ -63,12 +68,7 @@ bool LateralSquare::notify(){
 
 		return false;
 
-}
-
-	// Else do stuff and notify textdisplay and Xwindow
-
+	}
 
 }
-
-
 
