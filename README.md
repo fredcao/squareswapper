@@ -18,7 +18,7 @@ Compile the program by using the **make** command.
 	* 2 for west
 	* 3 for east
 * **hint** returns a valid move **(x, y, z)** as above that would lead to match
-* **scramble** (available _only if no moves are possible_), reshuffles the squares on the board
+* **scramble** (available only if no moves are possible) reshuffles the squares on the board
 * **levelup** increases the difficulty level of the game by one
 * **leveldown** decreases the difficulty level of the game by one
 * **restart** clears the board and starts a new game at the same level
@@ -31,11 +31,12 @@ Compile the program by using the **make** command.
 * **-scriptfile file** uses **file** for this level's intial board configuration
 * **-startlevel n** starts the game in level **n**, default is level 0
 
-**Example: ./ss5k -text -startlevel 2** starts the game at level 2, in text only mode, and all other options as default
+###### Example
+./ss5k -text -startlevel 2** starts the game at level 2, in text only mode, and all other options as default
 
 ### Authors
 
 <a href='https://github.com/fredcao'>@fredcao</a>
 <p>
-<a href='https://github.com/kevinchenxue'>@kevinchenxue</a>
+<a href='https://github.com/kevinchenxue'>@KevinChenXue</a>
 
