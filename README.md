@@ -10,6 +10,12 @@ Start and run an **X server**, export the display if necessary.
 
 Compile the program by using the **make** command.
 
+Run the program:
+
+```
+./ss5k
+```
+
 ### Command Line Input
 
 * **swap x y z** swaps the square at the **(x, y)** co-ordinate with the square in the **z** direction
