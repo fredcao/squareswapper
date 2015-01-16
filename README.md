@@ -32,7 +32,9 @@ Compile the program by using the **make** command.
 * **-startlevel n** starts the game in level **n**, default is level 0
 
 ###### Example
-	./ss5k -text -startlevel 2
+```
+./ss5k -text -startlevel 2
+```
 starts the game at level 2, in text only mode, and all other options as default
 
 ### Authors
